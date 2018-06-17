@@ -1,0 +1,47 @@
+#n Wyam.Markdown
+#n Wyam.Razor
+#n Wyam.Yaml
+#n Wyam.Html
+#n Wyam.Feeds
+
+// Normalize the culture for the examples so they produce the same output regardless of system culture
+System.Globalization.CultureInfo.DefaultThreadCurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("ru-RU");
+
+Settings[Keys.Host] = "dotnet.ru";
+Settings[Keys.LinksUseHttps] = true;
+
+Settings["title"] = "DotNet.Ru site";
+Settings["description"] = "Best from the sites.";
+
+//////////////////////////////////////////////////////////////////////
+// Pipelines
+//////////////////////////////////////////////////////////////////////
+
+Pipelines.Add("Communities",
+    ReadFiles("Communities/*.yaml"),
+    Yaml(),
+    Content(String.Empty),
+    Meta(Keys.RelativeFilePath, (doc, ctx) => doc.String("name") + ".html"),
+    Razor()
+        .WithLayout("/Communities/_Layout.cshtml"),
+    WriteFiles(),
+    Branch(
+        // Put the GenerateFeeds module inside a Branch module so that the feed
+        // documents don't get added to the set of output documents for this pipeline
+        GenerateFeeds(),
+        WriteFiles()
+    )
+);
+
+Pipelines.Add("Index",
+    ReadFiles("index.cshtml"),
+    Razor()
+        .WithLayout("/_Layout.cshtml"),
+    WriteFiles(".html")
+);
+
+Pipelines.Add("BuildSitemap",
+    Documents(@ctx.Documents),
+    Sitemap(),
+    WriteFiles((d, c) => "sitemap.xml")
+);

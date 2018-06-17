@@ -1,2 +1,5 @@
 [Tt]ools/
 [Oo]utput/
+/*.packages.xml
+/*.wyam.hash
+/*.wyam.dll
