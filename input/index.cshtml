@@ -1,12 +1,153 @@
-<!-- Communities -->
-<section>
-    <h2>Communities</h2>
-    <div>
-        <ul>
-    @foreach(var community in Documents["Communities"].OrderBy(c => c["name"]))
-    {
-        <li><a href="@Context.GetLink(community)">@community["name"]</a>@community["description"]</li>
-    }
+<section id="wrapper">
+
+  <!-- Spb -->
+  <section id="spb" class="wrapper spotlight style1">
+    <div class="inner">
+      <a href="https://vk.com/SpbDotNet" target="_blank" class="image"><img src="images/spbdotnet-squared-logo-200.png" alt="" /></a>
+      <div class="content">
+        <h2 class="major">Санкт-Петербург</h2>
+        <p>Второй по численности населения город России. Город федерального значения. Административный центр Северо-Западного федерального округа и Ленинградской области. Основан 27 мая 1703 года Петром I. В 1712-1918 годах столица Российского государства.</p>
+        <ul class="icons">
+          <li><a href="https://vk.com/SpbDotNet" target="_blank" class="icon fa-vk"><span class="label">VKontakte</span></a></li>
+          <li><a href="https://twitter.com/SpbDotNet" target="_blank" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+          <li><a href="https://t.me/SpbDotNet" target="_blank" class="icon fa-paper-plane"><span class="label">Telegram channel</span></a></li>
+          <li><a href="https://plus.google.com/u/0/communities/115643868183582812348" target="_blank" class="icon fa-google-plus"><span class="label">Google Plus</span></a></li>
+          <li><a href="https://SpbDotNet.timepad.ru/" target="_blank" class="icon fa-calendar"><span class="label">TimePad</span></a></li>
         </ul>
+        <a href="https://vk.com/SpbDotNet" target="_blank" class="special">Подробнее</a>
+      </div>
     </div>
+  </section>
+
+  <!-- Msk -->
+  <section id="msk" class="wrapper alt spotlight style2">
+    <div class="inner">
+      <a href="https://vk.com/MskDotNet" target="_blank" class="image"><img src="images/mskdotnet-squared-logo-200.png" alt="" /></a>
+      <div class="content">
+        <h2 class="major">Москва</h2>
+        <p>Столица Российской Федерации, город федерального значения, административный центр Центрального федерального округа. Крупнейший по численности населения город России и её субъект, самый населённый из городов, полностью расположенных в Европе, входит в первую десятку городов мира по численности населения.</p>
+        <ul class="icons">
+          <li><a href="https://vk.com/MskDotNet" target="_blank" class="icon fa-vk"><span class="label">VKontakte</span></a></li>
+          <li><a href="https://twitter.com/MskDotNet" target="_blank" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+          <li><a href="https://www.facebook.com/MskDotNet" target="_blank" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+          <li><a href="https://plus.google.com/u/0/communities/115478036634429345050" target="_blank" class="icon fa-google-plus"><span class="label">Google Plus</span></a></li>
+          <li><a href="https://MskDotNet.timepad.ru/" target="_blank" class="icon fa-calendar"><span class="label">TimePad</span></a></li>
+        </ul>
+        <a href="https://vk.com/MskDotNet" target="_blank" class="special">Подробнее</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sar -->
+  <section id="sar" class="wrapper spotlight style3">
+    <div class="inner">
+      <a href="https://vk.com/SarDotNet" target="_blank" class="image"><img src="images/sardotnet-squared-logo-200.png" alt="" /></a>
+      <div class="content">
+        <h2 class="major">Саратов</h2>
+        <p>Город на юго-востоке европейской части России, административный центр Саратовской области и Саратовского района. Крупный культурный, экономический и образовательный центр Поволжья. Входит в двадцатку крупнейших городов России.</p>
+        <ul class="icons">
+          <li><a href="https://vk.com/SarDotNet" target="_blank" class="icon fa-vk"><span class="label">VKontakte</span></a></li>
+          <li><a href="https://SarDotNet.timepad.ru/" target="_blank" class="icon fa-calendar"><span class="label">TimePad</span></a></li>
+        </ul>
+        <a href="https://vk.com/SarDotNet" target="_blank" class="special">Подробнее</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Kry -->
+  <section id="kry" class="wrapper alt spotlight style4">
+    <div class="inner">
+    <a href="https://vk.com/KryDotNet" target="_blank" class="image"><img src="images/krydotnet-squared-logo-200.png" alt="" /></a>
+    <div class="content">
+      <h2 class="major">Красноярск</h2>
+      <p>Один из крупнейших городов России, культурный, экономический, промышленный и образовательный центр Центральной и Восточной Сибири. Административный центр Красноярского края и городского округа город Красноярск. Центр Восточно-Сибирского экономического района.</p>
+      <ul class="icons">
+        <li><a href="https://vk.com/KryDotNet" target="_blank" class="icon fa-vk"><span class="label">VKontakte</span></a></li>
+        <li><a href="https://KryDotNet.timepad.ru/" target="_blank" class="icon fa-calendar"><span class="label">TimePad</span></a></li>
+      </ul>
+      <a href="https://vk.com/KryDotNet" target="_blank" class="special">Подробнее</a>
+    </div>
+    </div>
+  </section>
+
+  <!-- Kzn -->
+  <section id="kzn" class="wrapper spotlight style5">
+    <div class="inner">
+      <a href="https://vk.com/KznDotNet" target="_blank" class="image"><img src="images/kzndotnet-squared-logo-200.png" alt="" /></a>
+      <div class="content">
+        <h2 class="major">Казань</h2>
+        <p>Столица Республики Татарстан, крупный порт на левом берегу реки Волги, при впадении в неё реки Казанки. Один из крупнейших религиозных, экономических, политических, научных, образовательных, культурных и спортивных центров России.</p>
+        <ul class="icons">
+          <li><a href="https://vk.com/KznDotNet" target="_blank" class="icon fa-vk"><span class="label">VKontakte</span></a></li>
+          <li><a href="https://t.me/KznDotNet" target="_blank" class="icon fa-paper-plane"><span class="label">Telegram channel</span></a></li>
+          <li><a href="https://t.me/KznDotNetChat" target="_blank" class="icon fa-paper-plane"><span class="label">Telegram chat</span></a></li>
+          <li><a href="https://KznDotNet.timepad.ru/" target="_blank" class="icon fa-calendar"><span class="label">TimePad</span></a></li>
+        </ul>
+        <a href="https://vk.com/KznDotNet" target="_blank" class="special">Подробнее</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="wrapper alt style1">
+    <div class="inner">
+      <h2 class="major">Наши цели</h2>
+      <ul>
+        <li>Собираться вместе, знакомиться, обсуждать новости, делиться проблемами и искать решения</li>
+        <li>Приглашать самых лучших докладчиков, настоящих профессионалов и уникальных авторов</li>
+        <li>Находить и подготавливать новых спикеров для крупнейших российских конференций</li>
+        <li>Создать и поддерживать качественную коллекцию видео-лекций</li>
+      </ul>
+      <p>DotNet.Ru тесно сотрудничает с командой <a href="https://dotnext.ru/" target="_blank">DotNext</a>. Если ваша мечта — выступать на крупнейшей российской .NET конференции, но вы ещё ни разу не выходили на сцену, то наши сообщества это именно то, что вам нужно. Мы поможем вам с выбором востребованных тем, подготовкой качественной презентации и наработкой практики выступлений.</p>
+      <h2 class="major">Наши проекты</h2>
+      <p>Мы активно развиваем широкий спектр различных инициатив и открыты для каждого, кто хочет проявить себя независимо от знаний и направления.</p>
+
+      <section class="features">
+      <article>
+        <a href="https://vk.com/DotNetRu" target="_blank" class="image"><img src="images/proj-news.jpg" alt="" /></a>
+        <h3 class="major">Новости</h3>
+        <p>Мы поддерживаем информационный портал, который будет постоянно держать вас в курсе самых важных новостей, лучших статей и авторитетных личностей из мира .NET.</p>
+        <p><div id="vk_subscribe"></div></p>
+        <a href="https://vk.com/DotNetRu" target="_blank" class="special">Читать</a>
+      </article>
+      <article>
+        <a href="https://www.youtube.com/DotNetRu" target="_blank" class="image"><img src="images/proj-video.jpg" alt="" /></a>
+        <h3 class="major">Видео</h3>
+        <p>Мы подготавливаем, записываем и выкладываем в свободный доступ все наши доклады, покрывающие самые интересные и актуальные темы для .NET сообщества.</p>
+        <p><div class="g-ytsubscribe" data-channelid="UCHFl23Ah_l4gEUTXYUStQdQ" data-layout="default" data-theme="dark" data-count="default"></div></p>
+        <a href="https://www.youtube.com/DotNetRu" target="_blank" class="special">Смотреть</a>
+      </article>
+      <article>
+        <a href="https://t.me/DotNetRuChat" target="_blank" class="image"><img src="images/proj-chat.jpg" alt="" /></a>
+        <h3 class="major">Telegram чат</h3>
+        <p>Мы общаемся в самом большом русскоязычном чате по .NET в Telegram'е, где каждый может обсудить свои проблемы и поделиться опытом с коллегами.</p>
+        <a href="https://t.me/DotNetRuChat" target="_blank" class="special">Общаться</a>
+      </article>
+      <article>
+        <a href="https://github.com/DotNetRu" target="_blank" class="image"><img src="images/proj-code.jpg" alt="" /></a>
+        <h3 class="major">Совместная разработка</h3>
+        <p>Мы вместе разрабатываем различные проекты на GitHub и всегда ищем тех, кто может помочь сообществу не только словом, но и кодом.</p>
+        <a href="https://github.com/DotNetRu" target="_blank" class="special">Творить</a>
+      </article>
+      <article>
+        <a href="https://habrahabr.ru/company/it_people/blog/324352/" target="_blank" class="image"><img src="images/proj-meetups.jpg" alt="" /></a>
+        <h3 class="major">Встречи</h3>
+        <p>Мы проводим регулярные встречи, читаем доклады, эксперементируем с форматами, обсуждаем новости, делимся знаниями, учимся у коллег и просто хорошо проводим время в кругу единомышленников.</p>
+        <a href="https://habrahabr.ru/company/it_people/blog/324352/" target="_blank" class="special">Узнать зачем выступать</a>
+      </article>
+      <article>
+        <a href="https://habrahabr.ru/company/jugru/blog/334476/" target="_blank" class="image"><img src="images/proj-community.jpg" alt="" /></a>
+        <h3 class="major">Новые сообщества</h3>
+        <p>Если вы хотите организовать .NET сообщество в вашем городе, свяжитесь с нами. У нас богатый опыт организации встреч, тренировки докладчиков, общения со спонсорами и мы всегда рады новым инициативам.</p>
+        <a href="https://habrahabr.ru/company/jugru/blog/334476/" target="_blank" class="special">Узнать о сообществах</a>
+      </article>
+      </section>
+      <!--
+        <ul class="actions">
+          <li><a href="#" class="button">Посмотреть всё</a></li>
+        </ul>
+      -->
+    </div>
+  </section>
+
 </section>

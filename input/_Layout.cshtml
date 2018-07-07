@@ -1,17 +1,199 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html lang="ru">
+  <head>
+@{
+    string id = Model.String("Id");
+    string title = Model.String("Title");
+    title = $"DotNet.Ru{(String.IsNullOrWhiteSpace(title) ? String.Empty : " " + title)}";
+    string description = Model.String("Description", "Всероссийское объединение .NET сообществ");
+    string intro = Model.String("Intro");
+    string image = Model.String("Image", "http://dotnet.ru/images/dotnetru-banner-1200x630.png");
+    string url = Context.GetLink(Document, true);
+}
 
-  @Html.Partial("Shared/Head")
+    <title>@title</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/main2.css" />
+    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 
+    <!-- Favicons (https://RealFaviconGenerator.net/) -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+    <link rel="manifest" href="/icons/manifest.json">
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#68217a">
+    <link rel="shortcut icon" href="/icons/favicon.ico">
+    <meta name="apple-mobile-web-app-title" content="DotNet.Ru">
+    <meta name="application-name" content="DotNet.Ru">
+    <meta name="msapplication-config" content="/icons/browserconfig.xml">
+    <meta name="theme-color" content="#68217a">
+    <!-- /Favicons -->
+
+    <meta property="og:title" content="@title">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="@url">
+    <meta property="og:image" content="@image">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="@description">
+    <meta property="og:description" content="@description">
+    <meta property="og:site_name" content="DotNet.Ru">
+    <meta property="og:locale" content="ru_RU">
+
+    <meta name="twitter:title" content="@title">
+    <meta name="twitter:description" content="@description">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@@DotNetRu">
+    <meta name="twitter:creator" content="@@DotNetRu">
+    <meta name="twitter:image" content="@image">
+
+  </head>
   <body>
 
-    <!-- Main -->
-    <div id="main">
-            @RenderBody()
+    <div id="page-wrapper">
+
+      <!-- Header -->
+      <header id="header" class="alt">
+        <h1><a href="http://DotNet.Ru">DotNet.Ru</a></h1>
+        <nav>
+          <a href="#menu">Меню</a>
+        </nav>
+      </header>
+
+@{
+    var menuItems = new List<MenuItem>
+    {
+        new MenuItem("news", "Новости"),
+        new MenuItem("communities", "Сообщества"),
+        new MenuItem("projects", "Проекты"),
+        new MenuItem("speakers", "Спикеры"),
+        new MenuItem("friends", "Спонсоры"),
+        new MenuItem("about", "О Нас")
+    };
+}
+      <!-- Horizontal Menu -->
+      <nav id="hor-menu">
+        <div class="inner">
+          <ul class="actions fit small">
+@foreach (var menuItem in menuItems)
+{
+    var itemSelected = menuItem.Id == id ? " special" : String.Empty;
+
+            <li><a href="@menuItem.Id" class="button fit small@(itemSelected)">@menuItem.Title</a></li>
+}
+          </ul>
+        </div>
+      </nav>
+
+      <!-- Popup Menu -->
+      <nav id="menu">
+        <div class="inner">
+          <h2>DotNet.Ru</h2>
+          <ul class="links">
+@foreach (var menuItem in menuItems)
+{
+            <li><a href="@menuItem.Id">@menuItem.Title</a></li>
+}
+          </ul>
+          <a href="#" class="close">Закрыть</a>
+        </div>
+      </nav>
+
+      <!-- Banner -->
+      <section id="banner">
+        <div class="inner">
+          <div class="logo"><img class="icon" src="images/dotnetru-squared-logo-200.png" alt="" /></div>
+          <h2>@title</h2>
+          <p>@intro</p>
+        </div>
+      </section>
+
+@RenderBody()
+
+      <!-- Footer -->
+      <section id="footer">
+        <div class="inner">
+
+@if (Model.ContainsKey("FeedbackTitle"))
+{
+          <!-- Feedback -->
+          <h2 class="major">Предложить новость</h2>
+          <p>Друзья, если вы обнаружили интересную статью, новость, видео из мира .NET, то вы всегда можете предложить её для публикации в нашем сообществе.</p>
+          <form method="POST" action="https://formspree.io/hi@DotNet.Ru">
+            <input type="hidden" name="_subject" value="Новость для DotNet.Ru" />
+            <input type="hidden" name="_format" value="plain" />
+            <input type="hidden" name="_next" value="http://DotNet.Ru/" />
+            <input type="hidden" name="_language" value="ru" />
+            <input type="text" name="_gotcha" style="display:none" />
+            <div class="field">
+              <label for="name">Ваше имя (для указания авторства)</label>
+              <input type="text" name="name" id="name" />
+            </div>
+            <div class="field">
+              <label for="message">Ссылка и описание (не обязательно)</label>
+              <textarea name="message" id="message" rows="4"></textarea>
+            </div>
+            <ul class="actions">
+              <li><input type="submit" value="Отправить сообщение" /></li>
+            </ul>
+          </form>
+
+          <!-- Contacts -->
+          <ul class="contact">
+            <li class="fa-envelope"><a href="mailto:hi@DotNet.Ru">Hi@DotNet.ru</a></li>
+            <li class="fa-vk"><a href="https://vk.com/DotNetRu" target="_blank">vk.com/DotNetRu</a></li>
+            <li class="fa-twitter"><a href="https://twitter.com/DotNetRu" target="_blank">twitter.com/DotNetRu</a></li>
+            <li class="fa-youtube"><a href="https://www.youtube.com/DotNetRu" target="_blank">youtube.com/DotNetRu</a></li>
+            <li class="fa-github"><a href="https://github.com/DotNetRu" target="_blank">github.com/DotNetRu</a></li>
+            <li class="fa-apple"><a href="https://itunes.apple.com/us/app/dotnetru/id1293895734" target="_blank">Приложение под iOS</a></li>
+            <li class="fa-android"><a href="https://play.google.com/store/apps/details?id=com.dotnetru.droid" target="_blank">Приложение под Android</a></li>
+          </ul>
+
+}
+          <!-- Copyright -->
+          <ul class="copyright">
+            <li>&copy; <a href="http://DotNet.Ru">DotNet.Ru</a></li>
+<!--
+Solid State by HTML5 UP
+html5up.net | @@ajlkn
+Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+            <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+          </ul>
+        </div>
+      </section>
+
     </div>
 
-    @Html.Partial("Shared/Footer")
+    <!-- Scripts -->
+    <script src="assets/js/skel.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+    <script src="assets/js/main.js"></script>
 
+    <!-- TODO: Insert counters -->
   </body>
-
 </html>
+
+@functions {
+
+    class MenuItem
+    {
+        public readonly string Id;
+        public readonly string Title;
+
+        public MenuItem(string id, string title)
+        {
+            Id = id;
+            Title = title;
+        }
+    }
+
+}
