@@ -8,15 +8,18 @@
 System.Globalization.CultureInfo.DefaultThreadCurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("ru-RU");
 
 Settings[Keys.Host] = "dotnet.ru";
-Settings[Keys.LinksUseHttps] = true;
+Settings[Keys.LinksUseHttps] = false;
 
-Settings["title"] = "DotNet.Ru site";
-Settings["description"] = "Best from the sites.";
+Settings["Id"] = "index";
+Settings["Title"] = "";
+Settings["Description"] = "Всероссийское объединение .NET сообществ";
+Settings["Intro"] = "Группа независимых сообществ .NET разработчиков со всей России. Мы объединяем людей вокруг .NET платформы, чтобы способствовать обмену опытом и знаниями. Проводим регулярные встречи, чтобы делиться новостями и лучшими практиками в разработке программных продуктов.";
+Settings["Image"] = "http://dotnet.ru/images/dotnetru-banner-1200x630.png";
 
 //////////////////////////////////////////////////////////////////////
 // Pipelines
 //////////////////////////////////////////////////////////////////////
-
+/*
 Pipelines.Add("Communities",
     ReadFiles("Communities/*.yaml"),
     Yaml(),
@@ -32,16 +35,17 @@ Pipelines.Add("Communities",
         WriteFiles()
     )
 );
-
+*/
 Pipelines.Add("Index",
     ReadFiles("index.cshtml"),
     Razor()
         .WithLayout("/_Layout.cshtml"),
     WriteFiles(".html")
 );
-
+/*
 Pipelines.Add("BuildSitemap",
     Documents(@ctx.Documents),
     Sitemap(),
     WriteFiles((d, c) => "sitemap.xml")
 );
+*/
