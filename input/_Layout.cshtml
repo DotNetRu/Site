@@ -2,15 +2,23 @@
 <html lang="ru">
   <head>
 @{
-    string id = Model.String("Id");
-    string title = Model.String("Title");
+    string id = Requare("Id");
+    string title = Requare("Title");
     title = $"DotNet.Ru{(String.IsNullOrWhiteSpace(title) ? String.Empty : " " + title)}";
-    string description = Model.String("Description", "Всероссийское объединение .NET сообществ");
-    string intro = Model.String("Intro");
-    string image = Model.String("Image", "http://dotnet.ru/images/dotnetru-banner-1200x630.png");
+    string description = Requare("Description");
+    string intro = Requare("Intro");
+    string image = Requare("Image");
+    image = Context.GetLink(image, true);
     string url = Context.GetLink(Document, true);
 }
-
+<!--
+Id: @id
+Title: @title
+Description: @description
+Image: @image
+Intro: @intro
+Url: @url
+ -->
     <title>@title</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -183,6 +191,16 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 </html>
 
 @functions {
+
+    string Requare(string key)
+    {
+        var value = Model.String(key);
+        if (value == null)
+        {
+            throw new ApplicationException($"Can't found {key} metadata");
+        }
+        return value;
+    }
 
     class MenuItem
     {

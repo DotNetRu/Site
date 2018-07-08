@@ -11,23 +11,34 @@ System.Globalization.CultureInfo.DefaultThreadCurrentCulture = System.Globalizat
 Settings[Keys.Host] = "dotnet.ru";
 Settings[Keys.LinksUseHttps] = false;
 
-Settings["Id"] = "index";
-Settings["Title"] = "";
-Settings["Description"] = "Всероссийское объединение .NET сообществ";
-Settings["Intro"] = "Группа независимых сообществ .NET разработчиков со всей России. Мы объединяем людей вокруг .NET платформы, чтобы способствовать обмену опытом и знаниями. Проводим регулярные встречи, чтобы делиться новостями и лучшими практиками в разработке программных продуктов.";
-Settings["Image"] = "http://dotnet.ru/images/dotnetru-banner-1200x630.png";
-
 //////////////////////////////////////////////////////////////////////
 // Pipelines
 //////////////////////////////////////////////////////////////////////
-/*
-Pipelines.Add("Communities",
-    ReadFiles("Communities/*.yaml"),
-    Yaml(),
-    Content(String.Empty),
-    Meta(Keys.RelativeFilePath, (doc, ctx) => doc.String("name") + ".html"),
+
+Pipelines.Add("Pages",
+    ReadFiles("{!_,}*.cshtml"),
+    FrontMatter(Yaml()),
+    Meta("Id", (doc, ctx) => doc.Source.FileNameWithoutExtension.FullPath.ToLower()),
+    Meta(Keys.RelativeFilePath, (doc, ctx) => doc.String("Id") + ".html"),
     Razor()
-        .WithLayout("/Communities/_Layout.cshtml"),
+        .WithLayout("/_Layout.cshtml"),
+    WriteFiles()
+);
+
+Pipelines.Add("Resources",
+    CopyFiles("Resources/**")
+        .To((source, dest) => { return dest.Path.FullPath.Replace("/Resources/", "/"); })
+);
+
+/*
+Pipelines.Add("News",
+    ReadFiles("News/*.cshtml"),
+    FrontMatter(Yaml()),
+    //Content(String.Empty),
+    Meta("Id", (doc, ctx) => doc.Source.Directory.Name.ToLower()),
+    Meta(Keys.RelativeFilePath, (doc, ctx) => doc.String("id") + ".html"),
+    Razor()
+        .WithLayout("/_Layout.cshtml"),
     WriteFiles(),
     Branch(
         // Put the GenerateFeeds module inside a Branch module so that the feed
@@ -36,21 +47,10 @@ Pipelines.Add("Communities",
         WriteFiles()
     )
 );
-*/
-Pipelines.Add("Index",
-    ReadFiles("index.cshtml"),
-    Razor()
-        .WithLayout("/_Layout.cshtml"),
-    WriteFiles(".html")
-);
-/*
+
 Pipelines.Add("BuildSitemap",
     Documents(@ctx.Documents),
     Sitemap(),
     WriteFiles((d, c) => "sitemap.xml")
 );
 */
-Pipelines.Add("Resources",
-    CopyFiles("Resources/**")
-        .To((source, dest) => { return dest.Path.FullPath.Replace("/Resources/", "/"); })
-);
