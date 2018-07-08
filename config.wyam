@@ -6,6 +6,7 @@
 
 // Normalize the culture for the examples so they produce the same output regardless of system culture
 System.Globalization.CultureInfo.DefaultThreadCurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("ru-RU");
+//System.Text.Encodings.Web.HtmlEncoder.Default = new System.Text.Encodings.Web.HtmlEncoder(UnicodeRanges.All);
 
 Settings[Keys.Host] = "dotnet.ru";
 Settings[Keys.LinksUseHttps] = false;
@@ -49,3 +50,7 @@ Pipelines.Add("BuildSitemap",
     WriteFiles((d, c) => "sitemap.xml")
 );
 */
+Pipelines.Add("Resources",
+    CopyFiles("Resources/**")
+        .To((source, dest) => { return dest.Path.FullPath.Replace("/Resources/", "/"); })
+);
