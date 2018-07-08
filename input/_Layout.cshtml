@@ -126,23 +126,37 @@ Url: @url
       <section id="footer">
         <div class="inner">
 
-@if (Model.ContainsKey("FeedbackTitle"))
-{
+@{
+    string feedbackTitle = Model.String("FeedbackTitle", "Связаться");
+    string feedbackDescription = Model.String("FeedbackDescription", "Пишите по любым вопросам и предложениям. Мы сами перенаправим ваше послание нужному адресату.");
+    string feedbackSubject = Model.String("FeedbackSubject", "Сайт DotNet.Ru");
+    string feedbackFromName = Model.String("FeedbackFromName", "Имя");
+    string feedbackFromEmail = Model.String("FeedbackFromEmail", "Обратный email адрес для ответа");
+    bool feedbackFromEmailHide = Model.Bool("FeedbackFromEmailHide", false);
+    string feedbackMessage = Model.String("FeedbackMessage", "Сообщение");
+}
           <!-- Feedback -->
-          <h2 class="major">Предложить новость</h2>
-          <p>Друзья, если вы обнаружили интересную статью, новость, видео из мира .NET, то вы всегда можете предложить её для публикации в нашем сообществе.</p>
+          <h2 class="major">@feedbackTitle</h2>
+          <p>@feedbackDescription</p>
           <form method="POST" action="https://formspree.io/hi@DotNet.Ru">
-            <input type="hidden" name="_subject" value="Новость для DotNet.Ru" />
+            <input type="hidden" name="_subject" value="@feedbackSubject" />
             <input type="hidden" name="_format" value="plain" />
             <input type="hidden" name="_next" value="http://DotNet.Ru/" />
             <input type="hidden" name="_language" value="ru" />
             <input type="text" name="_gotcha" style="display:none" />
             <div class="field">
-              <label for="name">Ваше имя (для указания авторства)</label>
+              <label for="name">@feedbackFromName</label>
               <input type="text" name="name" id="name" />
             </div>
+@if (!feedbackFromEmailHide)
+{
             <div class="field">
-              <label for="message">Ссылка и описание (не обязательно)</label>
+              <label for="email">@feedbackFromEmail</label>
+              <input type="email" name="email" id="email" />
+            </div>
+}
+            <div class="field">
+              <label for="message">@feedbackMessage</label>
               <textarea name="message" id="message" rows="4"></textarea>
             </div>
             <ul class="actions">
@@ -161,7 +175,6 @@ Url: @url
             <li class="fa-android"><a href="https://play.google.com/store/apps/details?id=com.dotnetru.droid" target="_blank">Приложение под Android</a></li>
           </ul>
 
-}
           <!-- Copyright -->
           <ul class="copyright">
             <li>&copy; <a href="http://DotNet.Ru">DotNet.Ru</a></li>
