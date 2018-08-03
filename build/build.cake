@@ -11,12 +11,10 @@ var target = Argument("target", "Default");
 // PREPARATION
 //////////////////////////////////////////////////////////////////////
 
-var isLocal = BuildSystem.IsLocalBuild;
-var isRunningOnAppVeyor = AppVeyor.IsRunningOnAppVeyor;
-var isPullRequest = AppVeyor.Environment.PullRequest.IsPullRequest;
-var buildNumber = AppVeyor.Environment.Build.Number;
-
-var outputDir = Directory("./output");
+var root = Directory(MakeAbsolute(Directory("..")).FullPath);
+var inputDir = root + Directory("input");
+var outputDir = root + Directory("output");
+var wyamFile = root + File("config.wyam");
 
 //////////////////////////////////////////////////////////////////////
 // TASKS
@@ -25,30 +23,29 @@ var outputDir = Directory("./output");
 Task("Dump")
     .Does(() =>
 {
-    Information($"isLocal = {isLocal}");
-    Information($"isRunningOnAppVeyor = {isRunningOnAppVeyor}");
-    Information($"isPullRequest = {isPullRequest}");
-    Information($"buildNumber = {buildNumber}");
+    Information($"root [{root.GetType().Name}]: {root}");
+    Information($"input [{inputDir.GetType().Name}]: {inputDir}");
+    Information($"output [{outputDir.GetType().Name}]: {outputDir}");
+    Information($"wyam [{wyamFile.GetType().Name}]: {wyamFile}");
 });
 
 Task("Clean")
     .Does(() =>
-    {
-        CleanDirectory(outputDir);
-    });
+{
+    CleanDirectory(outputDir);
+});
 
 Task("Build")
-    .Description("Generates the site.")
     .IsDependentOn("Clean")
     .Does(() =>
+{
+    Wyam(new WyamSettings
     {
-        Wyam(new WyamSettings
-        {
-            //UpdatePackages = true,
-            ConfigurationFile = File("./config.wyam"),
-            OutputPath = outputDir
-        });
+        //UpdatePackages = true,
+        ConfigurationFile = wyamFile,
+        OutputPath = outputDir
     });
+});
 
 //////////////////////////////////////////////////////////////////////
 // TASK TARGETS

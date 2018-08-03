@@ -1,5 +1,3 @@
-[Tt]ools/
-[Oo]utput/
-/*.packages.xml
-/*.wyam.hash
-/*.wyam.dll
+/build/tools/
+/output/
+/config.wyam.*
