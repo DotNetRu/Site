@@ -2,23 +2,16 @@
 <html lang="ru">
   <head>
 @{
-    string id = Requare("Id");
-    string title = Requare("Title");
-    title = $"DotNet.Ru{(String.IsNullOrWhiteSpace(title) ? String.Empty : " " + title)}";
-    string description = Requare("Description");
-    string intro = Requare("Intro");
+    string idRaw = Requare("Id");
+    var id = Encode(idRaw);
+    string titleRaw = Requare("Title");
+    var title = Encode($"DotNet.Ru{(String.IsNullOrWhiteSpace(titleRaw) ? String.Empty : " " + titleRaw)}");
+    var description = RequareValue("Description");
+    var intro = RequareValue("Intro");
     string image = Requare("Image");
     image = Context.GetLink(image, true);
     string url = Context.GetLink(Document, true);
 }
-<!--
-Id: @id
-Title: @title
-Description: @description
-Image: @image
-Intro: @intro
-Url: @url
- -->
     <title>@title</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -89,7 +82,7 @@ Url: @url
           <ul class="actions fit small">
 @foreach (var menuItem in menuItems)
 {
-    var itemSelected = menuItem.Id == id ? " special" : String.Empty;
+    var itemSelected = menuItem.Id == idRaw ? " special" : String.Empty;
 
             <li><a href="@menuItem.Id" class="button fit small@(itemSelected)">@menuItem.Title</a></li>
 }
@@ -127,13 +120,13 @@ Url: @url
         <div class="inner">
 
 @{
-    string feedbackTitle = Model.String("FeedbackTitle", "Связаться");
-    string feedbackDescription = Model.String("FeedbackDescription", "Пишите по любым вопросам и предложениям. Мы сами перенаправим ваше послание нужному адресату.");
-    string feedbackSubject = Model.String("FeedbackSubject", "Сайт DotNet.Ru");
-    string feedbackFromName = Model.String("FeedbackFromName", "Имя");
-    string feedbackFromEmail = Model.String("FeedbackFromEmail", "Обратный email адрес для ответа");
+    var feedbackTitle = Encode(Model.String("FeedbackTitle", "Связаться"));
+    var feedbackDescription = Encode(Model.String("FeedbackDescription", "Пишите по любым вопросам и предложениям. Мы сами перенаправим ваше послание нужному адресату."));
+    var feedbackSubject = Encode(Model.String("FeedbackSubject", "Сайт DotNet.Ru"));
+    var feedbackFromName = Encode(Model.String("FeedbackFromName", "Имя"));
+    var feedbackFromEmail = Encode(Model.String("FeedbackFromEmail", "Обратный email адрес для ответа"));
     bool feedbackFromEmailHide = Model.Bool("FeedbackFromEmailHide", false);
-    string feedbackMessage = Model.String("FeedbackMessage", "Сообщение");
+    var feedbackMessage = Encode(Model.String("FeedbackMessage", "Сообщение"));
 }
           <!-- Feedback -->
           <h2 class="major">@feedbackTitle</h2>
@@ -204,6 +197,18 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 
 @functions {
 
+    class MenuItem
+    {
+        public readonly string Id;
+        public readonly Microsoft.AspNetCore.Html.IHtmlContent Title;
+
+        public MenuItem(string id, string title)
+        {
+            Id = id;
+            Title = Encode(title);
+        }
+    }
+
     string Requare(string key)
     {
         var value = Model.String(key);
@@ -214,16 +219,20 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
         return value;
     }
 
-    class MenuItem
+    Microsoft.AspNetCore.Html.IHtmlContent RequareValue(string key)
     {
-        public readonly string Id;
-        public readonly string Title;
+        var value = Requare(key);
+        return Encode(value);
+    }
 
-        public MenuItem(string id, string title)
-        {
-            Id = id;
-            Title = title;
-        }
+    // BUG Workaround: Non-english characters are encoded
+    // https://github.com/aspnet/HttpAbstractions/issues/315
+    static Microsoft.AspNetCore.Html.IHtmlContent Encode(string value)
+    {
+        // Manual encode
+        var encoded = System.Net.WebUtility.HtmlEncode(value);
+        // Return as a raw string
+        return new Microsoft.AspNetCore.Html.HtmlString(encoded);
     }
 
 }
