@@ -41,7 +41,7 @@ Task("Build")
 {
     Wyam(new WyamSettings
     {
-        //UpdatePackages = true,
+        RootPath = root,
         ConfigurationFile = wyamFile,
         OutputPath = outputDir
     });
