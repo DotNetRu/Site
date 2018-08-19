@@ -4,6 +4,10 @@
 #n Wyam.Html
 #n Wyam.Feeds
 
+using System.IO;
+using System.Xml;
+using System.Threading.Tasks;
+
 // Normalize the culture for the examples so they produce the same output regardless of system culture
 System.Globalization.CultureInfo.DefaultThreadCurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("ru-RU");
 //System.Text.Encodings.Web.HtmlEncoder.Default = new System.Text.Encodings.Web.HtmlEncoder(UnicodeRanges.All);
@@ -14,6 +18,13 @@ Settings[Keys.LinksUseHttps] = false;
 //////////////////////////////////////////////////////////////////////
 // Pipelines
 //////////////////////////////////////////////////////////////////////
+
+Pipelines.Add("News",
+    ReadFiles("News/*.md"),
+    FrontMatter(Yaml()),
+    Markdown(),
+    Execute((inputs, ctx, _) => EnrichByPersonInfo(inputs, ctx))
+);
 
 Pipelines.Add("Pages",
     ReadFiles("{!_,}*.cshtml"),
@@ -54,3 +65,111 @@ Pipelines.Add("BuildSitemap",
     WriteFiles((d, c) => "sitemap.xml")
 );
 */
+
+//////////////////////////////////////////////////////////////////////
+// Helpers
+//////////////////////////////////////////////////////////////////////
+
+public IReadOnlyList<IDocument> EnrichByPersonInfo(IReadOnlyList<IDocument> inputs, IExecutionContext context)
+{
+    var aliases = ResolvePersonAliases(context.FileSystem);
+    var outputs = new List<IDocument>(inputs.Count);
+
+    foreach(var input in inputs)
+    {
+        var output = input;
+
+        var authorName = input.String("Author");
+        if (!String.IsNullOrWhiteSpace(authorName) && aliases.TryGetValue(authorName, out var author))
+        {
+            var metadata = new MetadataItems
+            {
+                { "Author", author.Name },
+                { "AuthorImage", author.Image },
+                // TODO: MarkDown
+                { "AuthorDescription", author.Description },
+            };
+
+            output = context.GetDocument(input, metadata);
+        }
+
+        outputs.Add(output);
+    }
+
+    return outputs;
+}
+
+public IReadOnlyDictionary<string, Person> ResolvePersonAliases(IReadOnlyFileSystem fileSystem)
+{
+    var auditDirPath = fileSystem.RootPath.Parent.Combine("Audit");
+    var auditDir = fileSystem.GetDirectory(auditDirPath);
+
+    if (!auditDir.Exists)
+    {
+        Info($"Audit directory not found at {auditDir.Path}");
+        return new Dictionary<string, Person>();
+    }
+
+    Info($"Audit directory found at {auditDir.Path}");
+
+    var persons = auditDir
+        .GetDirectory("./db/speakers")
+        .GetFiles(SearchOption.AllDirectories)
+        .Where(file => file.Path.FileName.FullPath == "index.xml")
+        .Select(ReadPerson)
+        .ToList();
+
+    Info($"Found {persons.Count} persons");
+
+    var aliases = persons
+        .SelectMany(person => person.Aliases.Concat(new[] { person.Name }), (person, alias) => new { Alias = alias, Person = person })
+        .ToDictionary(aliased => aliased.Alias, aliased => aliased.Person);
+
+    return aliases;
+}
+
+public Person ReadPerson(IFile personFile)
+{
+    using (var personStream = personFile.OpenRead())
+    {
+        var xmlPerson = new XmlDocument();
+        xmlPerson.Load(personStream);
+        var xmlRoot = xmlPerson.DocumentElement;
+
+        var name = xmlRoot.SelectSingleNode("/Speaker/Name").InnerText;
+        var description = xmlRoot.SelectSingleNode("/Speaker/Description").InnerText;
+
+        var aliases = new List<string>();
+        var id = xmlRoot.SelectSingleNode("/Speaker/Id").InnerText;
+        var latinName = id.Replace("-", " ");
+        if (latinName != name)
+        {
+            aliases.Add(latinName);
+        }
+
+        var imageUrl = new Uri($"https://raw.githubusercontent.com/DotNetRu/Audit/master/db/speakers/{id}/avatar.jpg");
+
+        return new Person(name, aliases, imageUrl, description);
+    }
+}
+
+public void Info(string message)
+{
+    Wyam.Common.Tracing.Trace.Information(message);
+}
+
+public sealed class Person
+{
+    public Person(string name, IReadOnlyList<string> aliases, Uri image, string description)
+    {
+        Name = name;
+        Aliases = aliases.ToList();
+        Image = image;
+        Description = description;
+    }
+
+    public string Name { get; }
+    public IReadOnlyList<string> Aliases { get; }
+    public Uri Image { get; }
+    public string Description { get; }
+}

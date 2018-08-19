@@ -17,142 +17,59 @@ FeedbackMessage: Ссылка и описание (не обязательно)
     <div class="inner">
       <section>
 
-        <article class="news">
-          <h3 class="major">Performance traps of ref locals and ref returns in C#</h3>
-          <div class="image-container">
-            <p>
-              <span class="image left"><img src="https://static1.squarespace.com/static/5750d5129f72662d66448028/587c5777ebbd1ab22e094137/587c5b1ac534a5f54f4b63c6/1486512112615/Deadlift+-+Top+Position+Male.jpg" alt="" /></span>
-  С самых первых версий язык C# поддерживал передачу аргументов по ссылке и по значению. Но до C# 7 возвращаемый результат мог передаваться только по значению. В C# 7 эта несправедливоть была устранена с помощью <code>ref returns</code> и <code>ref locals</code>. Но не всё так просто. За большими возможностями стоят большие неочевидности.
-            </p>
-            <p class="contributor icon fa-bullhorn"><a href="#">Валерий Петров</a>, 8 мая 2018 г.</p>
-          </div>
-          <ul class="actions">
-            <li><a href="#" class="button small">C#</a></li>
-            <li><a href="#" class="button small">Language</a></li>
-            <li><a href="#" class="button small">Performance</a></li>
-            <li><a href="https://blogs.msdn.microsoft.com/seteplia/2018/04/11/performance-traps-of-ref-locals-and-ref-returns-in-c/" target="_blank" class="special">Подробнее</a></li>
-          </ul>
-          <h4>Сергей Тепляков</h4>
-          <div class="image-container">
-            <p>
-              <span class="image right"><img src="https://pbs.twimg.com/profile_images/1546589434/image034_4_twitter_400x400.jpg" alt="" /></span>
-  Много лет проектирования, разработки и внедрения сложных программных и аппаратно-программных комплексов. За это время Сергей прошел путь от младшего разработчика до руководителя отдела разработки; участвовал в проектировании и разработке как встроенных систем реального времени на языке C++, так и распределенных клиент-серверных приложений на С++ и C#. Является активным участником различных сообществ разработчиков. Активно пишет статьи как в <a href="https://blogs.msdn.microsoft.com/seteplia/">свой личный блог</a>, так и <a href="http://rsdn.org/">RSDN</a>.
-            </p>
-            <p>
-  В 2015 г. издана книга Сергея – Паттерны проектирования на платформе .NET, в которой показано, как изменились паттерны проектирования за последнее время, как на них повлияло современное увлечение функциональным программированием, и объясняется, каким образом они используются в современных .NET-приложениях.
-            </p>
-          </div>
-        </article>
+@foreach (var doc in Documents["News"].OrderByDescending(d => d.DateTime("PublishDate")))
+{
+    var hasAuthor = doc.ContainsKey("Author") && doc.ContainsKey("AuthorImage") && doc.ContainsKey("AuthorDescription");
 
         <article class="news">
-          <h3 class="major">Build 2018</h3>
+          <h3 class="major">@Encode(doc.String("Title"))</h3>
           <div class="image-container">
-            <p>
-              <span class="image left"><img src="https://news.microsoft.com/uploads/prod/sites/46/2018/04/Build-Banner-TW-Satya-1000x560.png" alt="" /></span>
-  Главное мероприятие года от Microsoft для ИТ-специалистов. Присоединяйтесь к лучшим инновационным умам, вдохновляйтесь новыми идеями, одними из первых загляните в будущее ИИ, облачных технологий и смешанной реальности!
-            </p>
-            <p>
-  Build 2018 – это свыше 350 сессий и воркшопов по различным темам, включая:
-            </p>
-            <ul>
-              <li>ИИ и машинное обучение</li>
-              <li>Разработка Progressive web apps</li>
-              <li>Дизайн пользовательских интерфейсов</li>
-              <li>Языки, фреймворки и инструменты разработчика</li>
-              <li>Big data и продвинутая аналитика</li>
-              <li>Интернет вещей (Internet of Things)</li>
-              <li>Смешанная реальность (Mixed reality)</li>
-              <li>Контейнеры</li>
-              <li>Бессерверные вычисления</li>
-              <li>Гибридное облако</li>
-              <li>DevOps</li>
-            </ul>
-            <p>
-  Подключайтесь к <a href="https://www.youtube.com/watch?v=YMsYZCsBLjA">прямой трансляции</a>.
-            </p>
-            <p class="contributor icon fa-bullhorn"><a href="#">Виктор Исайкин</a>, 4 мая 2018 г.</p>
+            <span class="image left"><img src="@doc.String("Image")" alt="" /></span>
+@Html.Raw(doc.Content)
+            <p class="contributor icon fa-bullhorn"><a href="#">@Encode(doc.String("Publisher"))</a>, @FormatDate(doc.DateTime("PublishDate"))</p>
           </div>
           <ul class="actions">
-            <li><a href="#" class="button small">Microsoft</a></li>
-            <li><a href="#" class="button small">Build</a></li>
-            <li><a href="#" class="button small">Conference</a></li>
-            <li><a href="https://news.microsoft.com/ru-ru/features/build2018/" target="_blank" class="special">Подробнее</a></li>
+    @foreach (var tag in doc.List<string>("Tags"))
+    {
+            <li><a href="#" class="button small">@Encode(tag)</a></li>
+    }
+            <li><a href="@doc.String("Link")" target="_blank" class="special">Подробнее</a></li>
           </ul>
-        </article>
-
-        <article class="news">
-          <h3 class="major">DotNet-Script теперь доступен как .NET Core Global Tool</h3>
+    @if (hasAuthor)
+    {
+          <h4>@Encode(doc.String("Author"))</h4>
           <div class="image-container">
             <p>
-              <span class="image left"><img src="https://www.strathweb.com/wp-content/themes/focused/img/strathweb.png" alt="" /></span>
-  Новая возможность DotNet CLI (устанавливать глобальные инструменты) постепенно превращает платформу в системный package manager. И одни из первых этот путь начали преодолевать скриптовые интерпритаторы. Ставим .NET Core SDK (версии не ниже 2.1.300-preview1), выполняем:
-            </p>
-  <pre><code>dotnet install tool -g dotnet-script</code></pre>
-            <p>
-  После чего можем запускать .csx файлы откуда угодно.
-            </p>
-            <p class="contributor icon fa-bullhorn"><a href="#">Валерий Петров</a>, 1 мая 2018 г.</p>
-          </div>
-          <ul class="actions">
-            <li><a href="#" class="button small">DotNetCLI</a></li>
-            <li><a href="#" class="button small">DotNet Script</a></li>
-            <li><a href="https://www.strathweb.com/2018/04/dotnet-script-now-available-as-net-core-sdk-2-1-global-tool/" target="_blank" class="special">Подробнее</a></li>
-          </ul>
-          <h4>Filip W.</h4>
-          <div class="image-container">
-            <p>
-              <span class="image right"><img src="https://pbs.twimg.com/profile_images/1884742088/IMG273_small.jpg" alt="" /></span>
-  Популярный .NET блогер, автор, open source разработчик и Microsoft MVP. Последнии несколько лет его блог удерживает звание самого полулярного ресурса по ASP.NET в интернете. Filip специализируется на стеке ASP.NET и современных web технологиях. Предпочитает трудиться над проектами из различных точек мира (Канада, Швейцария, Финляндия, Польша, Шотландия).
+              <span class="image right"><img src="@doc.String("AuthorImage")" alt="" /></span>
+@Encode(doc.String("AuthorDescription"))
             </p>
           </div>
+    }
         </article>
 
-        <article class="news">
-          <h3 class="major">ORM-less доступ к данным в .Net Core</h3>
-          <div class="image-container">
-            <p>
-              <span class="image left"><img src="https://i0.wp.com/www.blinkingcaret.com/wp-content/uploads/2018/04/ormless_data_access.jpg" alt="" /></span>
-  Учимся работать с БД из .NET Core без громоздких ORM, ведь зачастую достаточно лишь ADO.NET или легковесного Dapper'а. Тяжеловесные фреймворки скрывают он нас кучу тонкостей по чтению и записи данных, что приводит не только к плюсам, но и может послужить источником неоптимальной работы во многих случаях. Поэтому знать и уметь пользоваться низкоуровневыми инструментами полезно во все времена.
-            </p>
-            <p class="contributor icon fa-bullhorn"><a href="#">Виктор Исайкин</a>, 28 апреля 2018 г.</p>
-          </div>
-          <ul class="actions">
-            <li><a href="#" class="button small">ORM</a></li>
-            <li><a href="#" class="button small">Entity Framework</a></li>
-            <li><a href="#" class="button small">Dapper</a></li>
-            <li><a href="#" class="button small">ADO.NET</a></li>
-            <li><a href="https://www.blinkingcaret.com/2018/04/25/orm-less-data-access-in-net-core/" target="_blank" class="special">Подробнее</a></li>
-          </ul>
-        </article>
-
-        <article class="news">
-            <h3 class="major">Восток — правильная телеметрия для микросервисов на .NET</h3>
-            <div class="image-container">
-              <p>
-                <span class="image left"><img src="https://i.ytimg.com/vi/RKmkXbUsK0w/sddefault.jpg" alt="" /></span>
-  Компания Контур выкладывает в open source инструменты, которые использует для эксплуатации .NET-микросервисов. В докладе поговорим о телеметрии: централизованном сборе метрик, логов и распределенной трассировке. Алексей поделится идеями и кодом, который позволяет безболезненно эксплуатировать тысячи микросервисов, написанные сотнями разработчиков в десятках продуктовых команд Контура.
-              </p>
-              <p>
-  Доклад будет полезен разработчикам приложений с микросервисной архитектурой на платформе .NET, которые понимают, насколько важен мониторинг приложений в продакшне через централизованный сбор метрик, агрегацию логов и распределённых трассировок сетевых вызовов.
-              </p>
-              <p class="contributor icon fa-bullhorn"><a href="#">Анатолий Кулаков</a>, 25 апреля 2018 г.</p>
-            </div>
-            <ul class="actions">
-              <li><a href="#" class="button small">Logging</a></li>
-              <li><a href="#" class="button small">Monitoring</a></li>
-              <li><a href="#" class="button small">Distributed Tracing</a></li>
-              <li><a href="https://www.youtube.com/watch?v=RKmkXbUsK0w&list=PLbxr_aGL4q3Trf_b2Mr-P9PEafLY48aBw" target="_blank" class="special">Подробнее</a></li>
-            </ul>
-            <h4>Алексей Кирпичников</h4>
-            <div class="image-container">
-              <p>
-                <span class="image right"><img src="https://raw.githubusercontent.com/wiki/AnatolyKulakov/SpbDotNet/Alex-Kirpichnikov/Alex-Kirpichnikov.jpg" alt="" /></span>
-  Выпускник матмеха УрГУ. С 2014 года занимается внедрением DevOps-практик в Контуре. Сферы профессионального интереса: мониторинг, деплой, облачный хостинг для платформы .NET. Выступает на конференциях DUMP (Екатеринбург), CodeFest (Новосибирск) с рассказами о том, как устроен продакшен микросервисов в Контуре. Для души читает популярные доклады о математике.
-              </p>
-            </div>
-        </article>
+}
 
       </section>
     </div>
   </div>
 </section>
+
+@functions {
+
+    static Microsoft.AspNetCore.Html.IHtmlContent FormatDate(DateTime date)
+    {
+        var culture = new System.Globalization.CultureInfo("ru-RU");
+        return Encode(date.ToString("D", culture));
+    }
+
+    // BUG Workaround: Non-english characters are encoded
+    // https://github.com/aspnet/HttpAbstractions/issues/315
+    static Microsoft.AspNetCore.Html.IHtmlContent Encode(string value)
+    {
+        // Manual encode
+        var encoded = System.Net.WebUtility.HtmlEncode(value);
+        // Return as a raw string
+        return new Microsoft.AspNetCore.Html.HtmlString(encoded);
+    }
+
+}
