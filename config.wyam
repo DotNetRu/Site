@@ -90,6 +90,8 @@ public IReadOnlyList<IDocument> EnrichByPersonInfo(IReadOnlyList<IDocument> inpu
                 { "AuthorDescription", author.Description },
             };
 
+            // TODO: Resolve Publisher name from Aliases map
+
             output = context.GetDocument(input, metadata);
         }
 

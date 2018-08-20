@@ -1,7 +1,7 @@
 #tool nuget:?package=Wyam&version=1.4.1
 #addin nuget:?package=Cake.Wyam&version=1.4.1
 
-#load "./sitemeta.cake"
+#load "./NewsWriter.cake"
 
 //////////////////////////////////////////////////////////////////////
 // ARGUMENTS
