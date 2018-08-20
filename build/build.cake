@@ -1,11 +1,14 @@
 #tool nuget:?package=Wyam&version=1.4.1
 #addin nuget:?package=Cake.Wyam&version=1.4.1
 
+#load "./sitemeta.cake"
+
 //////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 //////////////////////////////////////////////////////////////////////
 
 var target = Argument("target", "Default");
+var userName = EnvironmentVariable("USERNAME");
 
 //////////////////////////////////////////////////////////////////////
 // PREPARATION
@@ -14,6 +17,7 @@ var target = Argument("target", "Default");
 var root = Directory(MakeAbsolute(Directory("..")).FullPath);
 var inputDir = root + Directory("input");
 var outputDir = root + Directory("output");
+var newsDir = inputDir + Directory("News");
 var wyamFile = root + File("config.wyam");
 
 //////////////////////////////////////////////////////////////////////
@@ -45,6 +49,18 @@ Task("Build")
         ConfigurationFile = wyamFile,
         OutputPath = outputDir
     });
+});
+
+Task("News")
+    .Does(() =>
+{
+    var urlText = Argument<string>("url");
+    Information($"Creating News based on: {urlText}");
+
+    var url = new Uri(urlText);
+    var writer = new NewsWriter(Context, newsDir, userName);
+
+    writer.BootstrapUrl(url);
 });
 
 //////////////////////////////////////////////////////////////////////
