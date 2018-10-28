@@ -69,7 +69,7 @@
 @{
     var menuItems = new List<MenuItem>
     {
-        new MenuItem("news", "Новости"),
+        //new MenuItem("news", "Новости"),
         new MenuItem("communities", "Сообщества"),
         new MenuItem("projects", "Проекты"),
         //new MenuItem("speakers", "Докладчики"),
@@ -191,7 +191,47 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
     <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
     <script src="assets/js/main.js"></script>
 
-    <!-- TODO: Insert counters -->
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+      (function (d, w, c) {
+          (w[c] = w[c] || []).push(function() {
+              try {
+                  w.yaCounter47461420 = new Ya.Metrika2({
+                      id:47461420,
+                      clickmap:true,
+                      trackLinks:true,
+                      accurateTrackBounce:true
+                  });
+              } catch(e) { }
+          });
+
+          var n = d.getElementsByTagName("script")[0],
+              s = d.createElement("script"),
+              f = function () { n.parentNode.insertBefore(s, n); };
+          s.type = "text/javascript";
+          s.async = true;
+          s.src = "https://mc.yandex.ru/metrika/tag.js";
+
+          if (w.opera == "[object Opera]") {
+              d.addEventListener("DOMContentLoaded", f, false);
+          } else { f(); }
+      })(document, window, "yandex_metrika_callbacks2");
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/47461420" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113122190-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-113122190-1');
+    </script>
+    <!-- /Global site tag (gtag.js) - Google Analytics -->
+
+@RenderSection("Script", false)
+
   </body>
 </html>
 
