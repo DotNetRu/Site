@@ -11,6 +11,7 @@
     string image = Requare("Image");
     image = Context.GetLink(image, true);
     string url = Context.GetLink(Document, true);
+    string rootUrl = Context.GetLink();
 }
     <title>@title</title>
     <meta charset="utf-8" />
@@ -60,7 +61,7 @@
 
       <!-- Header -->
       <header id="header" class="alt">
-        <h1><a href="http://DotNet.Ru">DotNet.Ru</a></h1>
+        <h1><a href="@rootUrl">DotNet.Ru</a></h1>
         <nav>
           <a href="#menu">Меню</a>
         </nav>
@@ -134,7 +135,7 @@
           <form method="POST" action="https://formspree.io/hi@DotNet.Ru">
             <input type="hidden" name="_subject" value="@feedbackSubject" />
             <input type="hidden" name="_format" value="plain" />
-            <input type="hidden" name="_next" value="http://DotNet.Ru/" />
+            <input type="hidden" name="_next" value="@url" />
             <input type="hidden" name="_language" value="ru" />
             <input type="text" name="_gotcha" style="display:none" />
             <div class="field">
@@ -170,13 +171,13 @@
 
           <!-- Copyright -->
           <ul class="copyright">
-            <li>&copy; <a href="http://DotNet.Ru">DotNet.Ru</a></li>
+            <li>&copy; <a href="@rootUrl">DotNet.Ru</a></li>
 <!--
 Solid State by HTML5 UP
 html5up.net | @@ajlkn
 Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-            <li>Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a></li>
+            <li>Design: <a href="https://html5up.net" target="_blank">HTML5 UP</a></li>
           </ul>
         </div>
       </section>

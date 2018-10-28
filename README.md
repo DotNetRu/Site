@@ -1,6 +1,6 @@
 # DotNetRu Site
 
-Репозиторий сайта [DotNet.Ru](http://DotNet.Ru).
+Репозиторий сайта [DotNet.Ru](https://DotNet.Ru).
 
 ## Internet as a Service
 

@@ -13,7 +13,7 @@ System.Globalization.CultureInfo.DefaultThreadCurrentCulture = System.Globalizat
 //System.Text.Encodings.Web.HtmlEncoder.Default = new System.Text.Encodings.Web.HtmlEncoder(UnicodeRanges.All);
 
 Settings[Keys.Host] = "DotNet.Ru";
-Settings[Keys.LinksUseHttps] = false;
+Settings[Keys.LinksUseHttps] = true;
 
 //////////////////////////////////////////////////////////////////////
 // Pipelines
