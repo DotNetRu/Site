@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 System.Globalization.CultureInfo.DefaultThreadCurrentCulture = System.Globalization.CultureInfo.CreateSpecificCulture("ru-RU");
 //System.Text.Encodings.Web.HtmlEncoder.Default = new System.Text.Encodings.Web.HtmlEncoder(UnicodeRanges.All);
 
-Settings[Keys.Host] = "dotnet.ru";
+Settings[Keys.Host] = "DotNet.Ru";
 Settings[Keys.LinksUseHttps] = false;
 
 //////////////////////////////////////////////////////////////////////
