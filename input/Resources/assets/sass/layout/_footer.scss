@@ -58,7 +58,7 @@
 			}
 		}
 
-		@include breakpoint(large) {
+		@include breakpoint('<=large') {
 
 			background-color:		_palette(bg);
 
@@ -76,7 +76,7 @@
 
 		}
 
-		@include breakpoint(medium) {
+		@include breakpoint('<=medium') {
 		 	margin-top: (_size(wrapper-edges, medium) * -1);
 		 	padding-top: _size(wrapper-edges, medium);
 
@@ -101,7 +101,7 @@
 			}
 		}
 
-		@include breakpoint(small) {
+		@include breakpoint('<=small') {
 		 	margin-top: (_size(wrapper-edges, small) * -1);
 		 	padding-top: _size(wrapper-edges, small);
 
@@ -118,7 +118,7 @@
 			}
 		}
 
-		@include breakpoint(xsmall) {
+		@include breakpoint('<=xsmall') {
 			.inner {
 				.copyright {
 					li {
@@ -135,7 +135,7 @@
 			}
 		}
 
-		@include breakpoint(xxsmall) {
+		@include breakpoint('<=xxsmall') {
 			.inner {
 				@include padding(2em, 1.5em);
 			}

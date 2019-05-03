@@ -15,12 +15,10 @@
 }
     <title>@title</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <link rel="stylesheet" href="assets/css/main2.css" />
-    <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
-    <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+    <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 
     <!-- Favicons (https://RealFaviconGenerator.net/) -->
     <link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
@@ -55,7 +53,7 @@
     <meta name="twitter:image" content="@image">
 
   </head>
-  <body>
+  <body class="is-preload">
 
     <div id="page-wrapper">
 
@@ -83,7 +81,7 @@
           <ul class="actions fit small">
 @foreach (var menuItem in menuItems)
 {
-    var itemSelected = menuItem.Id == idRaw ? " special" : String.Empty;
+    var itemSelected = menuItem.Id == idRaw ? " primary" : String.Empty;
 
             <li><a href="@menuItem.Id" class="button fit small@(itemSelected)">@menuItem.Title</a></li>
 }
@@ -133,29 +131,31 @@
           <h2 class="major">@feedbackTitle</h2>
           <p>@feedbackDescription</p>
           <form method="POST" action="https://formspree.io/hi@DotNet.Ru">
-            <input type="hidden" name="_subject" value="@feedbackSubject" />
-            <input type="hidden" name="_format" value="plain" />
-            <input type="hidden" name="_next" value="@url" />
-            <input type="hidden" name="_language" value="ru" />
-            <input type="text" name="_gotcha" style="display:none" />
-            <div class="field">
-              <label for="name">@feedbackFromName</label>
-              <input type="text" name="name" id="name" />
-            </div>
+            <div class="fields">
+              <input type="hidden" name="_subject" value="@feedbackSubject" />
+              <input type="hidden" name="_format" value="plain" />
+              <input type="hidden" name="_next" value="@url" />
+              <input type="hidden" name="_language" value="ru" />
+              <input type="text" name="_gotcha" style="display:none" />
+              <div class="field">
+                <label for="name">@feedbackFromName</label>
+                <input type="text" name="name" id="name" />
+              </div>
 @if (!feedbackFromEmailHide)
 {
-            <div class="field">
-              <label for="email">@feedbackFromEmail</label>
-              <input type="email" name="email" id="email" />
-            </div>
+              <div class="field">
+                <label for="email">@feedbackFromEmail</label>
+                <input type="email" name="email" id="email" />
+              </div>
 }
-            <div class="field">
-              <label for="message">@feedbackMessage</label>
-              <textarea name="message" id="message" rows="4"></textarea>
+              <div class="field">
+                <label for="message">@feedbackMessage</label>
+                <textarea name="message" id="message" rows="4"></textarea>
+              </div>
+              <ul class="actions">
+                <li><input type="submit" value="Отправить сообщение" /></li>
+              </ul>
             </div>
-            <ul class="actions">
-              <li><input type="submit" value="Отправить сообщение" /></li>
-            </ul>
           </form>
 
           <!-- Contacts -->
@@ -185,11 +185,11 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
     </div>
 
     <!-- Scripts -->
-    <script src="assets/js/skel.min.js"></script>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
-    <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
     <script src="assets/js/main.js"></script>
 
     <!-- Yandex.Metrika counter -->

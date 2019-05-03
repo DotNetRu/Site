@@ -87,7 +87,7 @@
 			}
 		}
 
-		@include breakpoint(small) {
+		@include breakpoint('<=small') {
 			height: 2.75em;
 			line-height: 2.75em;
 
@@ -114,7 +114,7 @@
 			}
 		}
 
-		@include breakpoint(xsmall) {
+		@include breakpoint('<=xsmall') {
 			nav {
 				a {
 					&[href="#menu"] {
