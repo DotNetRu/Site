@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+  <head>
+    <title>Dump</title>
+    <meta charset="utf-8" />
+    <style>
+    table {
+      width:100%;
+    }
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 4px 8px;
+      text-align: left;
+    }
+    table tr:nth-child(even) {
+      background-color: #eee
+    }
+    table th {
+      background-color: lime;
+    }
+    </style>
+</head>
+<body>
+
+@{
+  int index = 0;
+}
+@foreach (var doc in Documents["Communities"])
+{
+  <h2>Document №@(++index)</h2>
+  <table>
+    <tr><th>Name</th><th>Value</th></tr>
+    @foreach (var meta in doc)
+    {
+    <tr><td>@meta.Key</td><td>@meta.Value</td></tr>
+    }
+  </table>
+  <pre>
+    @doc.Content
+  </pre>
+}
+  </body>
+</html>

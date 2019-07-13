@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+  <head>
+@{
+    var title = RequareValue("Title");
+    var url = Requare("Url");
+    var image = Context.GetLink("images/dotnetru-banner-1200x630.png", true);
+    var targetUrl = Requare("RedirectUrl");
+    var description = RequareValue("City");
+
+    IgnoreBody();
+}
+    <title>@title</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content="0; URL=@targetUrl">
+    <link rel="canonical" href="@url">
+
+    <meta property="og:title" content="@title">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="@url">
+    <meta property="og:image" content="@image">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="@title">
+    <meta property="og:description" content="@description">
+    <meta property="og:site_name" content="DotNet.Ru">
+    <meta property="og:locale" content="ru_RU">
+
+    <meta name="twitter:title" content="@title">
+    <meta name="twitter:description" content="@description">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@@DotNetRu">
+    <meta name="twitter:creator" content="@@DotNetRu">
+    <meta name="twitter:image" content="@image">
+  </head>
+</html>
+
+@functions {
+
+    string Requare(string key)
+    {
+        var value = Model.String(key);
+        if (value == null)
+        {
+            throw new ApplicationException($"Can't found {key} metadata");
+        }
+        return value;
+    }
+
+    Microsoft.AspNetCore.Html.IHtmlContent RequareValue(string key)
+    {
+        var value = Requare(key);
+        return Encode(value);
+    }
+
+    // BUG Workaround: Non-english characters are encoded
+    // https://github.com/aspnet/HttpAbstractions/issues/315
+    static Microsoft.AspNetCore.Html.IHtmlContent Encode(string value)
+    {
+        // Manual encode
+        var encoded = System.Net.WebUtility.HtmlEncode(value);
+        // Return as a raw string
+        return new Microsoft.AspNetCore.Html.HtmlString(encoded);
+    }
+}

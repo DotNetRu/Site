@@ -33,13 +33,45 @@ Pipelines.Add("Pages",
     Meta(Keys.RelativeFilePath, (doc, ctx) => doc.String("Id") + ".html"),
     Razor()
         .WithLayout("/_Layout.cshtml"),
-    WriteFiles()
+    WriteFiles((doc, ctx) => "Www/" + doc.String(Keys.RelativeFilePath))
 );
 
 Pipelines.Add("Resources",
     CopyFiles("Resources/**")
-        .To((source, dest) => { return dest.Path.FullPath.Replace("/Resources/", "/"); })
+        .To((source, dest) => dest.Path.FullPath.Replace("/Resources/", "/Www/"))
 );
+
+//////////////////////////////////////////////////////////////////////
+// Seeds
+//////////////////////////////////////////////////////////////////////
+
+Pipelines.Add("Communities",
+    ReadFiles(ctx => ResolveAuditPath(ctx) + "/db/communities/*.xml"),
+    Xml(),
+    Execute((inputs, ctx, _) => EnrichCommunity(inputs, ctx))
+);
+
+// Pipelines.Add("Dump",
+//     ReadFiles("Diagnostics/Dump.cshtml"),
+//     Meta(Keys.RelativeFilePath, (doc, ctx) => "dump.html"),
+//     Razor(),
+//     WriteFiles()
+// );
+
+Pipelines.Add("CustomDomains",
+    Documents("Communities"),
+    Content((doc, ctx) => doc.String("SubHost").ToLower()),
+    WriteFiles((doc, ctx) => doc.String("ShortName") + "/CNAME")
+);
+
+Pipelines.Add("SubDomainRedirect",
+    Documents("Communities"),
+    Meta("RedirectUrl", (doc, ctx) => doc.String("VkUrl")),
+    Razor()
+        .WithLayout("/_Redirect.cshtml"),
+    WriteFiles((doc, ctx) => doc.String("ShortName") + "/index.html")
+);
+
 
 /*
 Pipelines.Add("News",
@@ -69,6 +101,57 @@ Pipelines.Add("BuildSitemap",
 //////////////////////////////////////////////////////////////////////
 // Helpers
 //////////////////////////////////////////////////////////////////////
+
+public string ResolveAuditPath(IExecutionContext context)
+{
+    var auditDirPath = context.FileSystem.RootPath.Parent.Combine("Audit").FullPath;
+    if (!Directory.Exists(auditDirPath))
+    {
+        throw new ArgumentException("Can't find Audit at " + auditDirPath);
+    }
+
+    Info($"Audit directory not found at {auditDirPath}");
+
+    return auditDirPath;
+}
+
+public IReadOnlyList<IDocument> EnrichCommunity(IReadOnlyList<IDocument> inputs, IExecutionContext context)
+{
+    var outputs = new List<IDocument>(inputs.Count);
+    var shortNameParser = new System.Text.RegularExpressions.Regex(@"(?<Prefix>\w{3})DotNet");
+
+    foreach(var input in inputs)
+    {
+        var output = input;
+
+        var name = input.String("Name");
+        string shortName = null;
+        var match = shortNameParser.Match(name);
+        if (match.Success)
+        {
+            shortName = match.Groups["Prefix"].Value;
+        }
+        else
+        {
+            throw new ArgumentException("Can't resolve short name for " + name);
+        }
+
+        var host = shortName + "." + Settings[Keys.Host];
+        var proto = (bool)Settings[Keys.LinksUseHttps] ? "https" : "http";
+        var metadata = new MetadataItems
+        {
+            { "ShortName", shortName },
+            { "SubHost",  host },
+            { "Url",  $"{proto}://{host}/" },
+            { "Title",  "Сообщество " + name },
+        };
+
+        output = context.GetDocument(input, metadata);
+        outputs.Add(output);
+    }
+
+    return outputs;
+}
 
 public IReadOnlyList<IDocument> EnrichByPersonInfo(IReadOnlyList<IDocument> inputs, IExecutionContext context)
 {
