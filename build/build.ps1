@@ -1,6 +1,6 @@
 Param
 (
-    [String]$CakeVersion = "0.26.1",
+    [String]$CakeVersion = "0.34.1",
     [String]$ToolsDir = "$PSScriptRoot\tools",
     [String]$ToolsProj = "$ToolsDir\build.csproj",
     [String]$BuildFile = "$PSScriptRoot\build.cake",
@@ -24,7 +24,7 @@ if (!(Test-Path $ToolsProj))
 }
 
 dotnet add "$ToolsProj" package cake.coreclr -v "$CakeVersion" --package-directory "$CAKE_DIR"
- 
+
 if (!(Test-Path $CAKE_DLL))
 {
     Write-Error "Could not find Cake assembly '$CAKE_DLL'"
