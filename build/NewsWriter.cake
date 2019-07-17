@@ -1,6 +1,6 @@
-#addin nuget:?package=HtmlAgilityPack
+#addin nuget:?package=HtmlAgilityPack&version=1.11.9
 
-#load "./SiteMetaInformation.cs"
+#load "./SiteMetaInformation.cake"
 
 using System.IO;
 using System.Text;
