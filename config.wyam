@@ -197,16 +197,16 @@ public IReadOnlyDictionary<string, Person> ResolvePersonAliases(IReadOnlyFileSys
 
     Info($"Audit directory found at {auditDir.Path}");
 
-    var persons = auditDir
+    var people = auditDir
         .GetDirectory("./db/speakers")
         .GetFiles(SearchOption.AllDirectories)
         .Where(file => file.Path.FileName.FullPath == "index.xml")
         .Select(ReadPerson)
         .ToList();
 
-    Info($"Found {persons.Count} persons");
+    Info($"Found {people.Count} people");
 
-    var aliases = persons
+    var aliases = people
         .SelectMany(person => person.Aliases.Concat(new[] { person.Name }), (person, alias) => new { Alias = alias, Person = person })
         .ToDictionary(aliased => aliased.Alias, aliased => aliased.Person);
 
