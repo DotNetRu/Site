@@ -1,4 +1,4 @@
-# DotNetRu.github.io
+# DotNetRu on GitHub Pages
 
 Сайт [DotNet.Ru](https://DotNet.Ru).
 
