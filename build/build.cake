@@ -15,10 +15,11 @@ var userName = EnvironmentVariable("USERNAME");
 //////////////////////////////////////////////////////////////////////
 
 var root = Directory(MakeAbsolute(Directory("..")).FullPath);
-var inputDir = root + Directory("input");
-var outputDir = root + Directory("output");
-var newsDir = inputDir + Directory("News");
+var inputGeneratorDir = root + Directory("input");
+var outputGeneratorDir = root + Directory("output");
+var inputGeneratorNewsDir = inputGeneratorDir + Directory("News");
 var wyamFile = root + File("config.wyam");
+var seedDir = Directory(System.IO.Path.GetFullPath(root + Directory("../Seeds")));
 
 //////////////////////////////////////////////////////////////////////
 // TASKS
@@ -28,15 +29,15 @@ Task("Dump")
     .Does(() =>
 {
     Information($"root [{root.GetType().Name}]: {root}");
-    Information($"input [{inputDir.GetType().Name}]: {inputDir}");
-    Information($"output [{outputDir.GetType().Name}]: {outputDir}");
-    Information($"wyam [{wyamFile.GetType().Name}]: {wyamFile}");
+    Information($"inputGeneratorDir [{inputGeneratorDir.GetType().Name}]: {inputGeneratorDir}");
+    Information($"outputGeneratorDir [{outputGeneratorDir.GetType().Name}]: {outputGeneratorDir}");
+    Information($"seedDir [{seedDir.GetType().Name}]: {seedDir}");
 });
 
 Task("Clean")
     .Does(() =>
 {
-    CleanDirectory(outputDir);
+    CleanDirectory(outputGeneratorDir);
 });
 
 Task("Build")
@@ -47,7 +48,7 @@ Task("Build")
     {
         RootPath = root,
         ConfigurationFile = wyamFile,
-        OutputPath = outputDir
+        OutputPath = outputGeneratorDir
     });
 });
 
@@ -58,10 +59,83 @@ Task("News")
     Information($"Creating News based on: {urlText}");
 
     var url = new Uri(urlText);
-    var writer = new NewsWriter(Context, newsDir, userName);
+    var writer = new NewsWriter(Context, inputGeneratorNewsDir, userName);
 
     writer.BootstrapUrl(url);
 });
+
+Task("Update-Seeds")
+    .Description("Update Seed repositories from site generated output")
+    .IsDependentOn("Build")
+    .DoesForEach(GetDirectories($"{outputGeneratorDir}/*"), inputSeedDir =>
+{
+    var seedName = inputSeedDir.GetDirectoryName();
+    Information($"::::::::::::: {seedName} :::::::::::::");
+
+    var outputSeedDir = seedDir + Directory(seedName);
+    if (!DirectoryExists(outputSeedDir))
+    {
+        Error($"Output seed directory {outputSeedDir} not found");
+        return;
+    }
+
+    CleanGitDirectory(outputSeedDir);
+
+    Information($"Copy Seed directory: {inputSeedDir}");
+    CopyDirectory(inputSeedDir, outputSeedDir);
+})
+.Finally(() =>
+{
+    // StartPowershellFile("./Get-SubGitStatus.ps1", args =>
+    // {
+    //     args
+    //         .Append("Path", inputSeedDir);
+    // });
+    StartProcess("powershell", new ProcessSettings
+    {
+        Arguments = $"-NoProfile -ExecutionPolicy Unrestricted -File ./Get-SubGitStatus.ps1 -Path \"{seedDir}\""
+    });
+});
+
+//////////////////////////////////////////////////////////////////////
+// PRIVATE FUNCTIONS
+//////////////////////////////////////////////////////////////////////
+
+void CleanGitDirectory(DirectoryPath directory)
+{
+    Information($"Clear Git directory: {directory}");
+
+    bool isNotGitPath(Cake.Core.IO.Path path)
+    {
+        return
+            !path.FullPath.EndsWith("/.git") &&
+            !path.FullPath.Contains("/.git/");
+    }
+
+    GetPaths($"{directory}/*")
+        .Where(isNotGitPath)
+        .ToList()
+        .ForEach(DeletePath);
+}
+
+void DeletePath(Cake.Core.IO.Path path)
+{
+    var fullPath = path.FullPath;
+    if (FileExists(fullPath))
+    {
+        Verbose($"  Delete file: {fullPath}");
+        DeleteFile(fullPath);
+    }
+    else
+    {
+        Verbose($"  Delete directory: {fullPath}");
+        DeleteDirectory(fullPath, new DeleteDirectorySettings
+        {
+            Recursive = true,
+            Force = true
+        });
+    }
+}
 
 //////////////////////////////////////////////////////////////////////
 // TASK TARGETS
@@ -69,7 +143,7 @@ Task("News")
 
 Task("Default")
     .IsDependentOn("Dump")
-    .IsDependentOn("Build");
+    .IsDependentOn("Update-Seeds");
 
 //////////////////////////////////////////////////////////////////////
 // EXECUTION
