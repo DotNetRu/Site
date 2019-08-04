@@ -48,7 +48,8 @@ Pipelines.Add("Resources",
 Pipelines.Add("Communities",
     ReadFiles(ctx => ResolveAuditPath(ctx) + "/db/communities/*.xml"),
     Xml(),
-    Execute((inputs, ctx, _) => EnrichCommunity(inputs, ctx))
+    Execute((inputs, ctx, _) => EnrichCommunity(inputs, ctx)),
+    Meta("RedirectUrl", (doc, ctx) => doc.String("VkUrl"))
 );
 
 // Pipelines.Add("Dump",
@@ -58,15 +59,23 @@ Pipelines.Add("Communities",
 //     WriteFiles()
 // );
 
-Pipelines.Add("CustomDomains",
-    Documents("Communities"),
+Pipelines.Add("SubDomains",
+    Documents("Communities")
+    // Concat(
+    //     Documents("Groups"),
+    //     Where((doc, ctx) => doc.ContainsKey("NextEvent")),
+    //     Execute((doc, ctx) => ctx.GetDocument((MetadataItems)doc["NextEvent"]))
+    // ),
+);
+
+Pipelines.Add("SubDomainName",
+    Documents("SubDomains"),
     Content((doc, ctx) => doc.String("SubHost").ToLower()),
     WriteFiles((doc, ctx) => doc.String("ShortName") + "/CNAME")
 );
 
 Pipelines.Add("SubDomainRedirect",
-    Documents("Communities"),
-    Meta("RedirectUrl", (doc, ctx) => doc.String("VkUrl")),
+    Documents("SubDomains"),
     Razor()
         .WithLayout("/_Redirect.cshtml"),
     WriteFiles((doc, ctx) => doc.String("ShortName") + "/index.html")
@@ -144,6 +153,7 @@ public IReadOnlyList<IDocument> EnrichCommunity(IReadOnlyList<IDocument> inputs,
             { "SubHost",  host },
             { "Url",  $"{proto}://{host}/" },
             { "Title",  "Сообщество " + name },
+            { "Description",  input.String("City") }
         };
 
         output = context.GetDocument(input, metadata);
