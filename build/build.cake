@@ -75,8 +75,7 @@ Task("Update-Seeds")
     var outputSeedDir = seedDir + Directory(seedName);
     if (!DirectoryExists(outputSeedDir))
     {
-        Error($"Output seed directory {outputSeedDir} not found");
-        return;
+        throw new Exception($"Output seed directory {outputSeedDir} not found. Run: Boombr Sync-CommunityEnv");
     }
 
     CleanGitDirectory(outputSeedDir);
