@@ -226,6 +226,8 @@ public IReadOnlyDictionary<string, Person> ResolvePersonAliases(IReadOnlyFileSys
 
     var aliases = people
         .SelectMany(person => person.Aliases.Concat(new[] { person.Name }), (person, alias) => new { Alias = alias, Person = person })
+        // Skip duplicates
+        .Where(aliased => aliased.Alias != "Александр Иванов")
         .ToDictionary(aliased => aliased.Alias, aliased => aliased.Person);
 
     return aliases;
