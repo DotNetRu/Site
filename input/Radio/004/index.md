@@ -23,12 +23,12 @@ Topics:
       - https://devblogs.microsoft.com/aspnet/asp-net-core-updates-in-net-core-3-1/
       - https://devblogs.microsoft.com/dotnet/announcing-entity-framework-core-3-1-and-entity-framework-6-4/
 
-  - Subject: Announcing Entity Framework Core 3.0 and Entity Framework 6.3 General Availability
+  - Subject: Announcing Entity Framework Core 3.0 and Entity Framework 6.3
     Timestamp: 00:10:00
     Links:
       - https://devblogs.microsoft.com/dotnet/announcing-ef-core-3-0-and-ef-6-3-general-availability/
 
-  - Subject: Microsoft says .NET Framework porting project is finished
+  - Subject: .NET Framework porting project is finished
     Timestamp: 00:14:20
     Links:
       - https://www.theregister.co.uk/2019/10/15/net_framework_port_end/
@@ -39,7 +39,7 @@ Topics:
     Links:
       - https://docs.microsoft.com/en-us/teamblog/introducing-microsoft-qanda
 
-  - Subject: Series: Exploring ASP.NET Core 3.0
+  - Subject: Exploring ASP.NET Core 3.0
     Timestamp: 00:19:48
     Links:
       - https://andrewlock.net/series/exploring-asp-net-core-3/
