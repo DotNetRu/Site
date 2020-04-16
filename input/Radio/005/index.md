@@ -10,7 +10,7 @@ Home: https://anchor.fm/radiodotnet/episodes/RadioDotNet-005-eatsfn
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/10465207/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2020-1-18%2F50774460-44100-2-9ba7f03739b75.mp3
 Topics:
 
-  - Subject: Ursatile - Software training and consultancy from Dylan Beattie
+  - Subject: Ursatile from Dylan Beattie
     Timestamp: 00:00:12
     Links:
       - https://ursatile.com/
@@ -29,19 +29,19 @@ Topics:
       - https://habr.com/ru/post/482354/
       - https://github.com/BigBabay/AsyncConverter
 
-  - Subject: Creating Common Intermediate Language projects with .NET SDK
+  - Subject: Creating CIL projects with .NET SDK
     Timestamp: 00:43:05
     Links:
       - https://www.strathweb.com/2019/12/creating-common-intermediate-language-projects-with-net-sdk/
       - https://github.com/dotnet/corefx/blob/master/src/System.Runtime.CompilerServices.Unsafe/src/System.Runtime.CompilerServices.Unsafe.il
 
-  - Subject: A modern alternative to the Microsoft Assembly Binding Log Viewer
+  - Subject: Alternative to the Microsoft Assembly Binding Log Viewer
     Timestamp: 00:47:43
     Links:
       - https://github.com/awaescher/Fusion
       - https://github.com/mikehadlow/AsmSpy
 
-  - Subject: Функциональное программирование — это не то, что нам рассказывают
+  - Subject: Функциональное программирование — не то, что нам рассказывают
     Timestamp: 00:52:11
     Links:
       - https://habr.com/ru/post/479238/
