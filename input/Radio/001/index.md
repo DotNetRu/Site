@@ -16,7 +16,7 @@ Topics:
       - https://msdn.microsoft.com/en-us/magazine/mt833477.aspx
       - https://twitter.com/ziki_cz/status/1151284877104488448
 
-  - Subject: Create a Trimmed Self-Contained Single Executable in .NET Core 3.0
+  - Subject: Trimmed Self-Contained Single Executable
     Timestamp: 00:17:10
     Links:
       - https://www.talkingdotnet.com/create-trimmed-self-contained-executable-in-net-core-3-0/
@@ -33,7 +33,7 @@ Topics:
       - https://github.com/dotnet/diagnostics/blob/master/documentation/dotnet-counters-instructions.md
       - https://github.com/dotnet/diagnostics/issues/346
 
-  - Subject: DragonFruit and System.CommandLine is a new way to think about .NET Console apps
+  - Subject: DragonFruit and System.CommandLine
     Timestamp: 00:33:01
     Links:
       - https://www.hanselman.com/blog/DragonFruitAndSystemCommandLineIsANewWayToThinkAboutNETConsoleApps.aspx

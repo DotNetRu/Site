@@ -10,7 +10,7 @@ Home: https://anchor.fm/radiodotnet/episodes/RadioDotNet-002-e6a85v
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/5627519/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2019-9-5%2F26806925-44100-2-6ae18921d00f4.mp3
 Topics:
 
-  - Subject: Microsoft to Consolidate .NET Repositories on GitHub
+  - Subject: Microsoft to Consolidate .NET Repositories
     Timestamp: 00:00:35
     Links:
       - https://www.infoq.com/news/2019/08/mcrosoft-consolidate-dotnet-repo/
@@ -33,7 +33,7 @@ Topics:
     Links:
       - https://devblogs.microsoft.com/dotnet/improving-net-core-installation-in-visual-studio-and-on-windows/
 
-  - Subject: Hidden gems in .NET Core 3 - David Fowler & Damian Edwards
+  - Subject: Hidden gems in .NET Core 3
     Timestamp: 00:20:15
     Links:
       - https://www.youtube.com/watch?v=xdSSH63IZZc
