@@ -8,6 +8,7 @@ Authors:
 Mastering: Максим Шошин
 Home: https://anchor.fm/radiodotnet/episodes/RadioDotNet-002-e6a85v
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/5627519/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2019-9-5%2F26806925-44100-2-6ae18921d00f4.mp3
+Video: https://www.youtube.com/watch?v=EKlCwiq1L6k
 Topics:
 
   - Subject: Microsoft to Consolidate .NET Repositories

@@ -8,6 +8,7 @@ Authors:
 Mastering: Максим Шошин
 Home: https://anchor.fm/radiodotnet/episodes/RadioDotNet-005-eatsfn
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/10465207/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2020-1-18%2F50774460-44100-2-9ba7f03739b75.mp3
+Video: https://www.youtube.com/watch?v=jzExv-HgmNI
 Topics:
 
   - Subject: Ursatile from Dylan Beattie

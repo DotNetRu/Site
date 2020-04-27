@@ -8,6 +8,7 @@ Authors:
 Mastering: Максим Шошин
 Home: https://anchor.fm/radiodotnet/episodes/RadioDotNet-001-e6a861
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/5627521/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2019-9-5%2F26806926-44100-2-3cc2d4aa415a7.mp3
+Video: https://www.youtube.com/watch?v=GRvDfkA0Dtw
 Topics:
 
   - Subject: Microsoft's Plans for .NET 5

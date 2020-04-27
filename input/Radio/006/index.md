@@ -9,6 +9,7 @@ Authors:
 Mastering: Максим Шошин
 Home: https://anchor.fm/radiodotnet/episodes/RadioDotNet-006-eberjk
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/11021364/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2020-2-11%2F56092155-44100-2-b27c3fc92a956.mp3
+Video: https://www.youtube.com/watch?v=UYbg4zTL85Y
 Topics:
 
   - Subject: Trends

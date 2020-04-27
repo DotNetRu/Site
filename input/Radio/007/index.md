@@ -8,6 +8,7 @@ Authors:
 Mastering: Максим Шошин
 Home: https://anchor.fm/radiodotnet/episodes/RadioDotNet-007-ecadcu
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/11924318/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2020-3-2%2F61245922-44100-2-3aacc2888cce7.mp3
+Video: https://www.youtube.com/watch?v=FT1qR1thMAg
 Topics:
 
   - Subject: Вышел перевод книги Конрада Кокосы
