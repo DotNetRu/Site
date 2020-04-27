@@ -9,6 +9,7 @@ Authors:
 Mastering: Максим Шошин
 Home: https://anchor.fm/radiodotnet/episodes/RadioDotNet-000-e6a860
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/5627520/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2019-9-5%2F26806927-44100-2-6ddf4e6460b21.mp3
+Video: https://www.youtube.com/watch?v=i5bKYXDxU0w
 Topics:
 
   - Subject: DotNext 2019 Piter

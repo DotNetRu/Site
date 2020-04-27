@@ -8,6 +8,7 @@ Authors:
 Mastering: Максим Шошин
 Home: https://anchor.fm/radiodotnet/episodes/RadioDotNet-008-ed1odj
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/12689267/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2020-3-20%2F66195932-44100-2-87e10a846e309.mp3
+Video: https://www.youtube.com/watch?v=x81fOAszVY4
 Topics:
 
   - Subject: RadioDotNet на YouTube

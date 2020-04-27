@@ -8,6 +8,7 @@ Authors:
 Mastering: Максим Шошин
 Home: https://anchor.fm/radiodotnet/episodes/RadioDotNet-004-e9e7d9
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/8903529/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2019-11-9%2F37363761-44100-2-443803cce13ec.mp3
+Video: https://www.youtube.com/watch?v=fsyKPDxXVd4
 Topics:
 
   - Subject: Announcing .NET Core 3.0
