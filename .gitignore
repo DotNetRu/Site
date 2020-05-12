@@ -1,3 +1,7 @@
-/build/tools/
-/output/
+.idea/
+.tmp/
+output/
+bin/
+obj/
+
 /config.wyam.*
