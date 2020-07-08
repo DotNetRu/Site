@@ -10,7 +10,7 @@ Authors:
   - Вагиф Абилов
 Mastering: Максим Шошин
 Music:
-  Максим Аршинов: https://hightech.group/ru/about
+  Максим Аршинов «Pensive yeti.0.1»: https://hightech.group/ru/about
 Home: https://anchor.fm/radiodotnet/episodes/RadioDotNet-010-eeseq4
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/14612740/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fproduction%2F2020-5-1%2F78707962-44100-2-a952057845fe5.mp3
 Video: https://www.youtube.com/watch?v=NbnfqPWsUXQ
