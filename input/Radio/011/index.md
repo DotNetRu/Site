@@ -10,6 +10,7 @@ Music:
   Максим Аршинов «Pensive yeti.0.1»: https://hightech.group/ru/about
 Home: https://anchor.fm/radiodotnet/episodes/RadioDotNet-011-egeki6
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/16257030/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2020-6-7%2Fa98725b3-f15b-c80d-4d27-b49b40a737b3.mp3
+Video: https://www.youtube.com/watch?v=_9lLcTOk-kE
 Topics:
 
   - Subject: .NET 5.0 Preview 5 and 6

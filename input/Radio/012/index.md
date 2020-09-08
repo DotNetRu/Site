@@ -10,6 +10,7 @@ Music:
   Максим Аршинов «Pensive yeti.0.1»: https://hightech.group/ru/about
 Home: https://anchor.fm/radiodotnet/episodes/RadioDotNet-012-ehcv48
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/17250888/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2020-6-29%2F63499629-6f96-49a1-0c84-5b9cdb9630be.mp3
+Video: https://www.youtube.com/watch?v=puAbACKHBXc
 Topics:
 
   - Subject: New keywords for Pattern Matching
