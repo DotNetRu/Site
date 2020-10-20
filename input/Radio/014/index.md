@@ -11,6 +11,7 @@ Music:
   Максим Аршинов «Pensive yeti.0.1»: https://hightech.group/ru/about
 Home: https://anchor.fm/radiodotnet/episodes/RadioDotNet-014-ekabdh
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/20310897/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2020-8-28%2F740ec9a7-00e7-a1d8-9f49-b248a9590514.mp3
+Video: https://www.youtube.com/watch?v=7UrEvqPjL2c
 Topics:
 
   - Subject: Microsoft Ignite 2020

@@ -10,6 +10,7 @@ Music:
   Максим Аршинов «Pensive yeti.0.1»: https://hightech.group/ru/about
 Home: https://anchor.fm/radiodotnet/episodes/RadioDotNet-015-elafok
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/21363924/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2020-9-20%2F1f0e0bda-281c-89f8-b2dc-328cca03ab9d.mp3
+Video: https://www.youtube.com/watch?v=fi8-6dbeZ6Y
 Topics:
 
   - Subject: TechTrain 2020 Autumn
