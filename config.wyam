@@ -227,8 +227,29 @@ public IReadOnlyDictionary<string, Person> ResolvePersonAliases(IReadOnlyFileSys
     var aliases = people
         .SelectMany(person => person.Aliases.Concat(new[] { person.Name }), (person, alias) => new { Alias = alias, Person = person })
         // Skip duplicates
-        .Where(aliased => aliased.Alias != "Александр Иванов")
+        .Where(aliased => aliased.Alias != "Александр Иванов" && aliased.Alias != "Евгений Пешков")
         .ToDictionary(aliased => aliased.Alias, aliased => aliased.Person);
+
+    /*
+    // Find duplicates
+    var people2 = people
+        .SelectMany(person => person.Aliases.Concat(new[] { person.Name }), (person, alias) => new { Alias = alias, Person = person })
+        // Skip duplicates
+        .Where(aliased => aliased.Alias != "Александр Иванов" && aliased.Alias != "Евгений Пешков");
+
+    var aliases = new Dictionary<string, Person>();
+    foreach (var person2 in people2)
+    {
+        if (aliases.ContainsKey(person2.Alias))
+        {
+            Info($"!!! Found duplicate alias: {person2.Alias}, {person2.Person.Image} !!!");
+        }
+        else
+        {
+            aliases.Add(person2.Alias, person2.Person);
+        }
+    }
+    */
 
     return aliases;
 }
