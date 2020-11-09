@@ -10,6 +10,7 @@ Music:
   Максим Аршинов «Pensive yeti.0.1»: https://hightech.group/ru/about
 Home: https://anchor.fm/radiodotnet/episodes/RadioDotNet-016-elqgf8
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/21888936/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2020-9-30%2F8b87b93b-f4d0-5c26-bd85-b18bccda961e.mp3
+Video: https://www.youtube.com/watch?v=JyaAOSTBLno
 Topics:
 
   - Subject: .NET 5.0 App Trimming and Potential
