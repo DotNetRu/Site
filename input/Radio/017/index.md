@@ -11,6 +11,7 @@ Music:
   Максим Аршинов «Pensive yeti.0.1»: https://hightech.group/ru/about
 Home: https://anchor.fm/radiodotnet/episodes/RadioDotNet-017-emdcjb
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/22507563/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2020-10-12%2Fcb19df1f-aa50-395c-3141-3568c44d2498.mp3
+Video: https://www.youtube.com/watch?v=dWlhdoLkaLs
 Topics:
 
   - Subject: Trends
