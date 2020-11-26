@@ -73,7 +73,7 @@ class SiteBuild : NukeBuild
                 Info($"::::::::::::: {seedName} :::::::::::::");
 
                 var outputSeedDirectory = SeedsDirectory / seedName;
-                Assert(DirectoryExists(outputSeedDirectory), $"Output seed directory {outputSeedDirectory} not found. Run: Boombr Sync-CommunityEnv");
+                Assert(DirectoryExists(outputSeedDirectory), $"Output seed directory {outputSeedDirectory} not found. Run: Boombr Initialize-CommunityEnv");
 
                 CleanDirectory(outputSeedDirectory, ExceptGitDirectory);
 
