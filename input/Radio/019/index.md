@@ -12,6 +12,7 @@ Music:
   Максим Аршинов «Pensive yeti.0.1»: https://hightech.group/ru/about
 Home: https://anchor.fm/radiodotnet/episodes/RadioDotNet-019-eo3uan
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/24295191/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2020-11-22%2F051957e8-e9d9-6157-01b1-f622ead5dd0f.mp3
+Video: https://www.youtube.com/watch?v=r-m5fJLaIHo
 Topics:
 
   - Subject: ReSharper & Rider 2020.3
