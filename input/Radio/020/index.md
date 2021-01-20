@@ -11,6 +11,7 @@ Music:
   Максим Аршинов «Pensive yeti.0.1»: https://hightech.group/ru/about
 Home: https://anchor.fm/radiodotnet/episodes/RadioDotNet-020-eoai02
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/24511938/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2020-11-28%2Febfb9f8b-9f1a-ad20-6043-e00ce0a4007d.mp3
+Video: https://www.youtube.com/watch?v=WaJWEcwBztc
 Topics:
 
   - Subject: О нас
