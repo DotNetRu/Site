@@ -10,6 +10,7 @@ Music:
   Максим Аршинов «Pensive yeti.0.1»: https://hightech.group/ru/about
 Home: https://anchor.fm/radiodotnet/episodes/RadioDotNet-021-epdmqk
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/25663764/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2021-0-24%2F4e14f298-ffb4-7e82-e502-9fbca5a26257.mp3
+Video: https://www.youtube.com/watch?v=313NoLKD8zQ
 Topics:
 
   - Subject: C# 9 CheatSheet
