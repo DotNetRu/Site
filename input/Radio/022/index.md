@@ -10,6 +10,7 @@ Music:
   Максим Аршинов «Pensive yeti.0.1»: https://hightech.group/ru/about
 Home: https://anchor.fm/radiodotnet/episodes/RadioDotNet-022-eq344a
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/26365514/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2021-1-7%2F2b0130ca-8af1-5bfa-134d-72fc0fae53c5.mp3
+Video: https://www.youtube.com/watch?v=QEGKhejnrDE
 Topics:
 
   - Subject: Visual Studio 2019 v16.9 Preview 3
