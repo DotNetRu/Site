@@ -12,6 +12,7 @@ Patrons:
   - Александр
 Home: https://anchor.fm/radiodotnet/episodes/RadioDotNet-023-er8181
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/27574977/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2021-1-28%2F1957034f-3ef1-af4e-6642-d32b0503dc1a.mp3
+Video: https://www.youtube.com/watch?v=hTtjAsbjCbA
 Topics:
 
   - Subject: Announcing .NET 6 Preview 1
