@@ -12,6 +12,7 @@ Patrons:
   - Александр
 Home: https://anchor.fm/radiodotnet/episodes/RadioDotNet-024-esluc2
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/29079362/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2021-2-15%2F82b854b2-ea92-891f-4775-86f6320f6cc2.mp3
+Video: https://www.youtube.com/watch?v=cUqBWtOA1Ag
 Topics:
 
   - Subject: Visual Studio 2019 v16.9 and v16.10 Preview 1
