@@ -10,8 +10,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="HtmlAgilityPack" Version="1.11.23" />
-    <PackageReference Include="Nuke.Common" Version="0.24.10" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.32" />
+    <PackageReference Include="Nuke.Common" Version="5.0.2" />
     <PackageReference Include="Wyam" Version="1.4.1" />
   </ItemGroup>
 
