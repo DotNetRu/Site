@@ -119,7 +119,22 @@ class SiteBuild : NukeBuild
         });
 
     Target Generate => _ => _
-        .ExecutesAsync(() => SiteGenerate.Main(Array.Empty<string>()));
+        .DependsOn(Clean)
+        .ExecutesAsync(() =>
+        {
+            var args = new[]
+            {
+                "--root",
+                $"{RootDirectory}",
+                "--input",
+                $"{InputDirectory}",
+                "--output",
+                $"{OutputDirectory}",
+                "--noclean"
+            };
+
+            return SiteGenerate.Main(args);
+        });
 }
 
 public static class TargetDefinitionExtensions
