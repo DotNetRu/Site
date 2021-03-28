@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Nuke.Common;
 using Nuke.Common.Execution;
 using Nuke.Common.IO;
@@ -116,4 +117,15 @@ class SiteBuild : NukeBuild
 
             writer.BootstrapUrl(url);
         });
+
+    Target Generate => _ => _
+        .ExecutesAsync(() => SiteGenerate.Main(Array.Empty<string>()));
+}
+
+public static class TargetDefinitionExtensions
+{
+    public static ITargetDefinition ExecutesAsync(this ITargetDefinition definition, Func<Task> action)
+    {
+        return definition.Executes(() => action().GetAwaiter().GetResult());
+    }
 }
