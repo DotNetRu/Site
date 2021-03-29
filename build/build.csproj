@@ -13,10 +13,8 @@
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.32" />
     <PackageReference Include="Nuke.Common" Version="5.0.2" />
-    <PackageReference Include="Statiq.App" Version="1.0.0-beta.38" />
-    <PackageReference Include="Statiq.Markdown" Version="1.0.0-beta.38" />
-    <PackageReference Include="Statiq.Yaml" Version="1.0.0-beta.38" />
     <PackageReference Include="Wyam" Version="1.4.1" />
+    <PackageReference Include="Statiq.Web" Version="1.0.0-beta.24" />
   </ItemGroup>
 
   <ItemGroup>
