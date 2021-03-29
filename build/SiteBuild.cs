@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using DotNetRu.Site.Generator;
+using DotNetRu.Site.News;
 using Nuke.Common;
 using Nuke.Common.Execution;
 using Nuke.Common.IO;
@@ -132,6 +133,7 @@ namespace DotNetRu.Site
             .DependsOn(Clean)
             .ExecutesAsync(() =>
             {
+                // https://statiq.dev/framework/running/command-line
                 var args = new[]
                 {
                     "--root", $"{RootDirectory}",
