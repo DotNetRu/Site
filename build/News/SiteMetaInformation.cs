@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using HtmlAgilityPack;
 using Nuke.Common;
 
+#nullable disable
+
 public sealed class SiteMetaInformation
 {
     string title;

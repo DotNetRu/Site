@@ -19,15 +19,15 @@ namespace DotNetRu.Site
     {
         public static int Main() => Execute<SiteBuild>(build => build.UpdateSeeds);
 
-        [Parameter("News source address")] readonly string NewsUrl;
+        [Parameter("News source address")] readonly string? NewsUrl;
 
-        [PathExecutable] readonly Tool PowerShell;
+        [PathExecutable] readonly Tool? PowerShell;
 
         [PackageExecutable(
             packageId: "Wyam",
             packageExecutable: "Wyam.exe",
             Version = "1.4.1")]
-        readonly Tool Wyam;
+        readonly Tool? Wyam;
 
         AbsolutePath InputDirectory => RootDirectory / "input";
 
@@ -60,6 +60,7 @@ namespace DotNetRu.Site
             .DependsOn(Dump)
             .Executes(() =>
             {
+                var _ = Wyam ?? throw new ArgumentNullException(nameof(Wyam));
                 Wyam(
                     $"--input \"{InputDirectory}\" --output \"{OutputDirectory}\" --config \"{WyamConfigFile}\" \"{RootDirectory}\"",
                     workingDirectory: RootDirectory);
@@ -69,6 +70,7 @@ namespace DotNetRu.Site
             .DependsOn(Build)
             .Executes(() =>
             {
+                if (PowerShell == null) throw new ArgumentNullException(nameof(PowerShell));
                 OutputDirectory.GlobDirectories("*").ForEach(UpdateSeed);
                 var statusFile = SeedsDirectory / "Get-SubGitStatus.ps1";
                 PowerShell(
@@ -118,6 +120,7 @@ namespace DotNetRu.Site
             .Requires(() => NewsUrl)
             .Executes(() =>
             {
+                var _ = NewsUrl ?? throw new ArgumentNullException(nameof(NewsUrl));
                 Info($"Creating News based on: {NewsUrl}");
                 var url = new Uri(NewsUrl);
                 var writer = new NewsWriter(InputNewsDirectory, Environment.UserName);
