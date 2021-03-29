@@ -1,0 +1,14 @@
+﻿@model EpisodeList
+@{
+    var russiaCulture = System.Globalization.CultureInfo.GetCultureInfo("ru-RU");
+}
+<h1>Radio episodes</h1>
+<div>
+    <ul>
+    @foreach (var episode in Model.Episodes)
+    {
+        var date = episode.PublishDate.ToString("d MMMM yyyy", russiaCulture);
+        <li>[@episode.Number] @episode.Title (@date)</li>
+    }
+    </ul>
+</div>
