@@ -1,0 +1,10 @@
+﻿@model Episode
+@{
+    var russiaCulture = System.Globalization.CultureInfo.GetCultureInfo("ru-RU");
+    var date = Model.PublishDate.ToString("d MMMM yyyy", russiaCulture);
+}
+<h1>@Model.Title</h1>
+<i>@date</i>
+<h2>Radio episodes @Model.Number</h2>
+
+@Model.Description
