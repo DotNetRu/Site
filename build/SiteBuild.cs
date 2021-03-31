@@ -139,7 +139,8 @@ namespace DotNetRu.Site
                     "--root", $"{RootDirectory}",
                     "--input", $"{InputDirectory}",
                     "--output", $"{OutputDirectory}",
-                    "--noclean"
+                    "--noclean",
+                    // "--log-level", "Debug"
                 };
 
                 return SiteGenerator.Main(args);

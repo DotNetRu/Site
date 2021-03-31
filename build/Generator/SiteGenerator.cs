@@ -21,6 +21,7 @@ namespace DotNetRu.Site.Generator
         //    [x] Add Index as output file
         //    [ ] Add each episode as output file
         //    [ ] Use design
+        //    [ ] Generate Sitemap
         public static Task<int> Main(string[] args) => Bootstrapper
             .Factory
             .CreateDefault(args)
