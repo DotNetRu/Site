@@ -13,6 +13,7 @@ Patrons:
   - Александр
 Home: https://anchor.fm/radiodotnet/episodes/OpenTelemetry-1-0------NET-6-P2-etnn81
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/30186177/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2021-2-28%2Fdf9ea32b-7e23-ca7a-55f1-5795f8a3fceb.mp3
+Video: https://www.youtube.com/watch?v=1LHqK1Y5lC8
 Topics:
 
   - Subject: Announcing .NET 6 Preview 2
