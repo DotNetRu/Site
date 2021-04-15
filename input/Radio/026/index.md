@@ -13,6 +13,7 @@ Patrons:
   - Александр
 Home: https://anchor.fm/radiodotnet/episodes/DotNext-2021-Piter-eueko5
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/30937285/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2021-3-7%2F197b09cd-1511-1e88-6932-67ebee55a6d7.mp3
+Video: https://www.youtube.com/watch?v=1m12hdeczUk
 Topics:
 
   - Subject: Best Practices
