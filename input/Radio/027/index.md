@@ -12,6 +12,7 @@ Patrons:
   - Александр
 Home: https://anchor.fm/radiodotnet/episodes/HTTP-API-tools---interpolated-strings---NET-6-P3-evab4k
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/31844948/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2021-3-20%2F66791098-cac9-7bb5-abba-082fb9f7a3a2.mp3
+Video: https://www.youtube.com/watch?v=S-zeRLLW6HE
 Topics:
 
   - Subject: Announcing .NET 6 Preview 3
