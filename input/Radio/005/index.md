@@ -1,6 +1,6 @@
 ---
 Number: 5
-Title: RadioDotNet №5
+Title: В ожидании C# 9, функциональный дзен, знакомство с Pulumi
 PublishDate: 2020-02-18T22:14:06Z
 Authors:
   - Анатолий Кулаков

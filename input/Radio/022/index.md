@@ -1,6 +1,6 @@
 ﻿---
 Number: 22
-Title: RadioDotNet №22
+Title: Собираем свой .NET, VS 16.9 P3, планы на R# и Rider 2021.1
 PublishDate: 2021-02-07T21:25:11Z
 Authors:
   - Анатолий Кулаков

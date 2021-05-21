@@ -1,6 +1,6 @@
 ﻿---
 Number: 19
-Title: RadioDotNet №19
+Title: Знакомство с Infer#, Apple Silicon, возможности R# и Rider 2020.3
 PublishDate: 2020-12-22T07:51:48Z
 Authors:
   - Анатолий Кулаков

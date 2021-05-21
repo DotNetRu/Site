@@ -1,6 +1,6 @@
 ---
 Number: 1
-Title: RadioDotNet №1
+Title: Планы на .NET 5, единый артефакт, зачем отдельный процесс для R#
 PublishDate: 2019-08-13T00:00:00Z
 Authors:
   - Анатолий Кулаков

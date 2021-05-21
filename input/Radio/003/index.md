@@ -1,6 +1,6 @@
 ---
 Number: 3
-Title: RadioDotNet №3
+Title: Полный обзор программы DotNext 2019 Moscow
 PublishDate: 2019-10-12T19:43:26Z
 Authors:
   - Анатолий Кулаков

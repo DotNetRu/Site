@@ -1,6 +1,6 @@
 ﻿---
 Number: 7
-Title: RadioDotNet №7
+Title: Perfolizer для алгоритмов, стабилизация PowerShell 7.0, VB.NET всё
 PublishDate: 2020-04-02T23:09:23Z
 Authors:
   - Анатолий Кулаков

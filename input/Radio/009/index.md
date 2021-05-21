@@ -1,6 +1,6 @@
 ﻿---
 Number: 9
-Title: RadioDotNet №9
+Title: Знакомство с Source generators, Maoni про GC, зачем нам YARP
 PublishDate: 2020-05-10T21:33:45Z
 Authors:
   - Анатолий Кулаков

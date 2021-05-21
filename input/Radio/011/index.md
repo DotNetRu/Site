@@ -1,6 +1,6 @@
 ﻿---
 Number: 11
-Title: RadioDotNet №11
+Title: Стабилизация gRPC-Web, знакомство c Tye, Состояние экосистемы
 PublishDate: 2020-07-07T22:11:27Z
 Authors:
   - Анатолий Кулаков

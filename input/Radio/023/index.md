@@ -1,6 +1,6 @@
 ﻿---
 Number: 23
-Title: RadioDotNet №23
+Title: Итоги года от JetBrains, новинки .NET 6 P1, шаблонизатор Scriban
 PublishDate: 2021-02-28T21:39:59Z
 Authors:
   - Анатолий Кулаков

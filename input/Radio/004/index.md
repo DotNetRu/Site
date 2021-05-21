@@ -1,6 +1,6 @@
 ---
 Number: 4
-Title: RadioDotNet №4
+Title: Релизы .NET Core 3.0 и 3.1, ASP.NET Core 3.1, EF Core 3.1
 PublishDate: 2019-12-09T20:27:22Z
 Authors:
   - Анатолий Кулаков

@@ -1,6 +1,6 @@
 ﻿---
 Number: 15
-Title: RadioDotNet №15
+Title: Знакомство с Code With Me, новинки .NET 5 RC2, здоровая память
 PublishDate: 2020-10-20T07:10:39Z
 Authors:
   - Анатолий Кулаков
