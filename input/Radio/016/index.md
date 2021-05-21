@@ -1,6 +1,6 @@
 ﻿---
 Number: 16
-Title: RadioDotNet №16
+Title: Source generators против AOP, планы на .NET 6, Навигация в GitHub
 PublishDate: 2020-10-30T21:52:08Z
 Authors:
   - Анатолий Кулаков

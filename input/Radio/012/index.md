@@ -1,6 +1,6 @@
 ﻿---
 Number: 12
-Title: RadioDotNet №12
+Title: Производительность в .NET 5, знакомство с Codespaces, ThreadLocal
 PublishDate: 2020-07-29T10:09:42Z
 Authors:
   - Анатолий Кулаков

@@ -1,6 +1,6 @@
 ﻿---
 Number: 13
-Title: RadioDotNet №13
+Title: AppTrimming в деталях, новинки .NET 5 P7, возможности VS 16.8 P2
 PublishDate: 2020-09-06T21:05:20Z
 Authors:
   - Анатолий Кулаков

@@ -1,6 +1,6 @@
 ﻿---
 Number: 8
-Title: RadioDotNet №8
+Title: Возможности VS 16.6 P2, оптимизации в RyuJIT, новый мир Wasmer
 PublishDate: 2020-04-20T21:34:32Z
 Authors:
   - Анатолий Кулаков

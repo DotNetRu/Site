@@ -1,6 +1,6 @@
 ---
 Number: 6
-Title: RadioDotNet №6
+Title: Полный обзор программы DotNext 2020 Piter
 PublishDate: 2019-03-11T22:22:26Z
 Authors:
   - Анатолий Кулаков

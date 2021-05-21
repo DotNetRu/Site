@@ -1,6 +1,6 @@
 ﻿---
 Number: 18
-Title: RadioDotNet №18
+Title: Релизы .NET 5, ASP.NET Core 5, EF Core 5, C# 9.0, F# 5.0
 PublishDate: 2020-11-29T22:55:45Z
 Authors:
   - Анатолий Кулаков

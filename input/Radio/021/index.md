@@ -1,6 +1,6 @@
 ﻿---
 Number: 21
-Title: RadioDotNet №21
+Title: Сетевые улучшения в .NET 5, System.Text.Json, планы на EF Core 6
 PublishDate: 2021-01-24T21:55:23Z
 Authors:
   - Анатолий Кулаков

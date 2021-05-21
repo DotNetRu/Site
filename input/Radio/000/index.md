@@ -1,6 +1,6 @@
 ---
 Number: 0
-Title: RadioDotNet №0
+Title: Полный обзор программы DotNext 2019 Piter
 PublishDate: 2019-05-12T22:38:10Z
 Authors:
   - Анатолий Кулаков

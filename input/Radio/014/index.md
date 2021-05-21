@@ -1,6 +1,6 @@
 ﻿---
 Number: 14
-Title: RadioDotNet №14
+Title: Новинки .NET 5 RC1, планы на R# и Rider 2020.3, быстрая память
 PublishDate: 2020-09-28T22:12:42Z
 Authors:
   - Анатолий Кулаков

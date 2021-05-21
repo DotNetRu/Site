@@ -1,6 +1,6 @@
 ﻿---
 Number: 10
-Title: RadioDotNet №10
+Title: Build 2020, стабилизация Blazor WebAssembly, знакомство с MAUI
 PublishDate: 2020-06-01T21:41:18Z
 Authors:
   - Анатолий Кулаков

@@ -1,6 +1,6 @@
 ﻿---
 Number: 17
-Title: RadioDotNet №17
+Title: Полный обзор программы DotNext 2020 Moscow
 PublishDate: 2020-11-12T21:34:24Z
 Authors:
   - Анатолий Кулаков

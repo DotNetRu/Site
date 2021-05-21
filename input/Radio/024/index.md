@@ -1,6 +1,6 @@
 ﻿---
 Number: 24
-Title: RadioDotNet №24
+Title: Экспансия MAUI, стабилизация Dapr 1.0, VS 16.9 и VS 16.10 P1
 PublishDate: 2021-03-15T21:52:42Z
 Authors:
   - Анатолий Кулаков
