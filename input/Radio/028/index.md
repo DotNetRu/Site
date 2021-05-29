@@ -14,6 +14,7 @@ Patrons:
   - Сергей
 Home: https://anchor.fm/radiodotnet/episodes/VS-x64---C-10---Pinned-Object-Heap-e104830
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/32693792/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2021-4-2%2Fa15e8492-fc1f-7ba0-66cb-941d84d8c266.mp3
+Video: https://www.youtube.com/watch?v=TBSiYdZ1K2M
 Topics:
 
   - Subject: Visual Studio 2022
