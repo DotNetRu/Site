@@ -13,6 +13,7 @@ Patrons:
   - Сергей
 Home: https://anchor.fm/radiodotnet/episodes/Performance----Nullable----DateTime-e11eq6r
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/34088603/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2021-4-23%2F41caeb71-5538-32c1-7b62-280bc4958d97.mp3
+Video: https://www.youtube.com/watch?v=hYd8GLfSFr0
 Topics:
 
   - Subject: Awesome Russian IT
