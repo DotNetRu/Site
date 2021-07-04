@@ -13,6 +13,7 @@ Patrons:
   - Сергей
 Home: https://anchor.fm/radiodotnet/episodes/NET-6-P4----PGO-----NET-Foundation-e12thph
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/35620081/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2021-5-16%2F1ff3ddc0-9183-d609-ca6e-62166d5440d5.mp3
+Video: https://www.youtube.com/watch?v=pEgyJi5pmHg
 Topics:
 
   - Subject: Announcing .NET 6 Preview 4
