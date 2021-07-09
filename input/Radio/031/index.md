@@ -14,6 +14,7 @@ Patrons:
   - Владислав
 Home: https://anchor.fm/radiodotnet/episodes/NET-6-P5---DPAD--GC----supply-chain-e13jqol
 Audio: https://anchor.fm/s/f0c0ef4/podcast/play/36350165/https%3A%2F%2Fd3ctxlq1ktw2nl.cloudfront.net%2Fstaging%2F2021-5-28%2F3fd7ee6e-ff94-f560-eb3b-bcf4c9f5677c.mp3
+Video: https://www.youtube.com/watch?v=pOfdQ113gI0
 Topics:
 
   - Subject: Announcing .NET 6 Preview 5
