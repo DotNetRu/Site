@@ -70,7 +70,8 @@ Pipelines.Add("SubDomains",
     Concat(
         Documents("CustomRedirects")
     ),
-    Meta("Url", (doc, ctx) => BuildSubHostUrl(doc.String("SubDomain")))
+    Meta("Url", (doc, ctx) => BuildSubHostUrl(doc.String("SubDomain"))),
+    Meta("SiteImage", (doc, ctx) => TryFindSiteImage(doc))
 );
 
 Pipelines.Add("SubDomainName",
@@ -86,6 +87,12 @@ Pipelines.Add("SubDomainRedirect",
     WriteFiles((doc, ctx) => doc.String("SubDomain") + "/index.html")
 );
 
+Pipelines.Add("SubDomainImage",
+    Documents("SubDomains"),
+    Where((doc, ctx) => doc.String("SiteImage") != null),
+    CopyFiles((doc, ctx) => doc.String("SiteImage"))
+        .To((source, dest) => ResolveSiteImageDestinationPathBecauseWyamSucks(source, dest))
+);
 
 /*
 Pipelines.Add("News",
@@ -127,6 +134,47 @@ public string ResolveAuditPath(IExecutionContext context)
     Info($"Audit directory not found at {auditDirPath}");
 
     return auditDirPath;
+}
+
+public string TryFindSiteImage(IDocument input)
+{
+    var imageDir = input.Source?.Directory?.FullPath;
+    if (imageDir == null)
+    {
+        return null;
+    }
+
+    var id = input.String("Id");
+    var imageName = String.Format("{0}-1280x640.png", id);
+    var imageFullName = Path.Combine(imageDir, imageName);
+    return File.Exists(imageFullName) ? imageFullName : null;
+}
+
+public FilePath ResolveSiteImageDestinationPathBecauseWyamSucks(IFile source, IFile destination)
+{
+    // Dirty hacks, tested only for redirect images
+    var imageName = source.Path.FileName.FullPath;
+    var idParts = imageName.Split('-');
+    if (idParts.Length == 0 || String.IsNullOrWhiteSpace(idParts[0]))
+    {
+        throw new ArgumentException("Can't extract ID for " + imageName);
+    }
+
+    var id = idParts[0];
+    var searchPattern = "Id: " + id;
+
+    var yamlFile = source
+        .Directory
+        .GetFiles()
+        .Where(file => file.Path.Extension == ".yml")
+        .Where(file => file.ReadAllText().Contains(searchPattern))
+        .Single();
+
+    var shortName = yamlFile.Path.FileNameWithoutExtension.FullPath;
+    var destinationDirectory = destination.Directory.Parent.GetDirectory(shortName);
+    var destinationFile = destinationDirectory.GetFile(destination.Path.FileName.FullPath.ToLowerInvariant());
+
+    return destinationFile.Path.FullPath;
 }
 
 public IReadOnlyList<IDocument> EnrichCommunity(IReadOnlyList<IDocument> inputs, IExecutionContext context)
