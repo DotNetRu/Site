@@ -4,7 +4,7 @@
 @{
     var title = RequareValue("Title");
     var url = Requare("Url");
-    var image = Context.GetLink("images/dotnetru-banner-1200x630.png", true);
+    var image = GetImageLink();
     var targetUrl = Requare("RedirectUrl");
     var description = RequareValue("Description");
 
@@ -37,6 +37,18 @@
 </html>
 
 @functions {
+
+    string GetImageLink()
+    {
+        var imageFilePath = Model.String("SiteImage");
+        if (imageFilePath == null)
+        {
+            return Context.GetLink("images/dotnetru-banner-1200x630.png", true);
+        }
+
+        var fileName = System.IO.Path.GetFileName(imageFilePath).ToLowerInvariant();
+        return Context.GetLink(fileName);
+    }
 
     string Requare(string key)
     {
